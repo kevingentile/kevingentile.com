@@ -13,8 +13,9 @@ func main() {
 	fmt.Println("Web Start")
 	router := mux.NewRouter() // Create gorilla router
 	router.HandleFunc("/", makeHandler(IndexHandler))
-	router.PathPrefix("/assets").Handler(http.StripPrefix("/assets/", http.FileServer(http.Dir("assets"))))
-	router.PathPrefix("/images").Handler(http.StripPrefix("/images/", http.FileServer(http.Dir("images"))))
+	router.PathPrefix("/assets/").Handler(http.StripPrefix("/assets/", http.FileServer(http.Dir("assets")))) //TODO this seems excessive...
+	router.PathPrefix("/images/").Handler(http.StripPrefix("/images/", http.FileServer(http.Dir("images"))))
+
 	log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), router)) // Listen on port defined by env variable PORT
 
 }
