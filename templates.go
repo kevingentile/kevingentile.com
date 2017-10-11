@@ -6,7 +6,7 @@ import (
 )
 
 var templates = template.Must(template.ParseFiles(
-	"helios/index.html",
+	"index.html",
 ))
 
 func renderTemplate(w http.ResponseWriter, tmpl string) {
