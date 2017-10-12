@@ -21,3 +21,7 @@ func LeftHandler(w http.ResponseWriter, r *http.Request) {
 func RightHandler(w http.ResponseWriter, r *http.Request) {
 	renderTemplate(w, "right-sidebar")
 }
+
+func NosideHandler(w http.ResponseWriter, r *http.Request) {
+	renderTemplate(w, "no-sidebar")
+}

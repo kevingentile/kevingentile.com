@@ -6,11 +6,13 @@ import (
 )
 
 var templates = template.Must(template.ParseFiles(
-	"index.html", "left-sidebar.html", "right-sidebar.html",
+	"index.template.html", "banner.template.html", "carousel.template.html",
+	"contact.template.html", "features.template.html", "footer.template.html",
+	"header.template.html", "main.template.html", "scripts.template.html",
 ))
 
 func renderTemplate(w http.ResponseWriter, tmpl string) {
-	tmpl = tmpl + ".html"                          //add html tag
+	tmpl = tmpl + ".template.html"                 //add html tag
 	err := templates.ExecuteTemplate(w, tmpl, nil) //attempt to render the template
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError) //Template not found/ not rendered
