@@ -6,9 +6,10 @@ import (
 )
 
 var templates = template.Must(template.ParseFiles(
-	"index.template.html", "banner.template.html", "carousel.template.html",
-	"contact.template.html", "features.template.html", "footer.template.html",
-	"header.template.html", "main.template.html", "scripts.template.html",
+	"index.template.html", "left-sidebar.template.html", "banner.template.html", "carousel.template.html",
+	"contact.template.html", "features.template.html", "footer.template.html", "photos.template.html",
+	"header.template.html", "main.template.html", "scripts.template.html", "nav.template.html",
+	"tweets.template.html", "posts.template.html",
 ))
 
 func renderTemplate(w http.ResponseWriter, tmpl string) {
