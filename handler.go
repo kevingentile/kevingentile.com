@@ -13,3 +13,11 @@ func makeHandler(handle func(http.ResponseWriter, *http.Request)) http.HandlerFu
 func IndexHandler(w http.ResponseWriter, r *http.Request) {
 	renderTemplate(w, "index")
 }
+
+func LeftHandler(w http.ResponseWriter, r *http.Request) {
+	renderTemplate(w, "left-sidebar")
+}
+
+func RightHandler(w http.ResponseWriter, r *http.Request) {
+	renderTemplate(w, "right-sidebar")
+}

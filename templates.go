@@ -6,7 +6,7 @@ import (
 )
 
 var templates = template.Must(template.ParseFiles(
-	"index.html",
+	"index.html", "left-sidebar.html", "right-sidebar.html",
 ))
 
 func renderTemplate(w http.ResponseWriter, tmpl string) {
