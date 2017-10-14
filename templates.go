@@ -1,16 +1,34 @@
 package main
 
 import (
+	"fmt"
 	"html/template"
+	"log"
 	"net/http"
+	"os"
+	"path/filepath"
+	"strings"
 )
 
-var templates = template.Must(template.ParseFiles(
-	"index.template.html", "left-sidebar.template.html", "banner.template.html", "carousel.template.html",
-	"contact.template.html", "features.template.html", "footer.template.html", "photos.template.html",
-	"header.template.html", "main.template.html", "scripts.template.html", "nav.template.html",
-	"tweets.template.html", "posts.template.html",
-))
+var templates = ParseTemplates()
+
+func ParseTemplates() *template.Template {
+	fmt.Println("parsing templates")
+	tmp := template.New("")
+	err := filepath.Walk("./templates", func(path string, info os.FileInfo, err error) error {
+		if strings.Contains(path, "template.html") {
+			_, err = tmp.ParseFiles(path)
+			if err != nil {
+				log.Println(err)
+			}
+		}
+		return nil
+	})
+	if err != nil {
+		panic(err)
+	}
+	return tmp
+}
 
 func renderTemplate(w http.ResponseWriter, tmpl string) {
 	tmpl = tmpl + ".template.html"                 //add html tag
