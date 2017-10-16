@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"html/template"
 	"log"
 	"net/http"
@@ -12,8 +11,8 @@ import (
 
 var templates = ParseTemplates()
 
+//ParseTemplates walks the template directory, parses all html templates, and returns a template pointer.
 func ParseTemplates() *template.Template {
-	fmt.Println("parsing templates")
 	tmp := template.New("")
 	err := filepath.Walk("./templates", func(path string, info os.FileInfo, err error) error {
 		if strings.Contains(path, "template.html") {
