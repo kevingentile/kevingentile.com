@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -10,7 +9,7 @@ import (
 )
 
 func main() {
-	fmt.Println("Web Start")
+	log.Println("keivngentile.com Web Start")
 	router := mux.NewRouter() // Create gorilla router
 
 	// "http://kevingentile.com/index.html"
@@ -27,7 +26,7 @@ func main() {
 	// "http://kevingentile.com/images/*"
 	router.PathPrefix("/images/").Handler(http.StripPrefix("/images/", http.FileServer(http.Dir("images"))))
 
-	fmt.Println(templates.DefinedTemplates())
+	//fmt.Println(templates.DefinedTemplates())
 	log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), router)) // Listen on port defined by environment variable PORT
 
 }
