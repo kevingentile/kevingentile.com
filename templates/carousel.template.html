@@ -2,7 +2,9 @@
 <!-- Carousel -->
 <section class="carousel">
     <div class="reel">
-        {{ range .Articles }} {{template "reelArticle" .}}
+        {{ with .carousel }}
+            {{ range .Articles }} {{template "reelArticle" .}}
+            {{ end }}
         {{ end }}
     </div>
 </section>
