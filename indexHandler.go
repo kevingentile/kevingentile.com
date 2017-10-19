@@ -7,6 +7,19 @@ import (
 )
 
 func IndexHandler(w http.ResponseWriter, r *http.Request) {
+
+	//type Heading struct {
+	//	Header string
+	//	Body   string
+	//}
+	heading := web.Heading{
+		Header: ":)",
+		Body:   "Welcome!",
+	}
+	banner := web.Heading{
+		Header: "Welcome to my portfolio!",
+		Body:   "Here lies the fruits of my labor...",
+	}
 	//type ReelArticle struct {
 	//	Title     string
 	//	Body      string
@@ -37,6 +50,6 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 			},
 		},
 	}
-	data := Data{"carousel": carousel, "nav": nav, "footer": footer}
+	data := Data{"heading": heading, "carousel": carousel, "nav": nav, "footer": footer, "banner": banner}
 	renderTemplate(w, "index", data)
 }

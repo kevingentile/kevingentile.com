@@ -1,20 +1,21 @@
 {{ define "header" }}
 <!-- Header -->
 <div id="header">
-
+    {{ template "nav" . }}
     <!-- Inner -->
     <div class="inner">
+        {{ with .heading }}
         <header>
-            <h1>:)</a></h1>
+            <h1>{{.Header}}</a></h1>
             <hr />
-            <p><a href="mailto:gentile_kevin94@hotmail.com">Welcome!</a></p>
+            <p>{{.Body}}</a></p>
         </header>
         <footer>
             <a href="#banner" class="button circled scrolly">Enter</a>
         </footer>
+        {{ end }}
     </div>
 
-    {{ template "nav" . }}
 
 </div>
 {{ end }}
