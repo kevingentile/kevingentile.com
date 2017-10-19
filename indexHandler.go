@@ -37,6 +37,6 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 			},
 		},
 	}
-	data := Data{"carousel": carousel}
+	data := Data{"carousel": carousel, "nav": nav}
 	renderTemplate(w, "index", data)
 }

@@ -2,9 +2,11 @@
 <!-- Nav -->
 <nav id="nav">
     <ul>
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="https://github.com/laughingcabbage/">GitHub</a></li>
-        <li><a href="#contact" class="scrolly">Contact</a></li>
+        {{ with .nav }}
+            {{ range .Buttons }}
+                <li><a href="{{.Link}}" class="{{.Class}}">{{.Name}}</a></li>
+            {{ end }}
+        {{ end }}
     </ul>
 </nav>
 {{ end }}
