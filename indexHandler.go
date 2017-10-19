@@ -50,6 +50,6 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 			},
 		},
 	}
-	data := Data{"heading": heading, "carousel": carousel, "nav": nav, "footer": footer, "banner": banner}
+	data := Data{"heading": heading, "carousel": carousel, "nav": nav, "footer": footer, "banner": banner, "scripts": scriptsCommon}
 	renderTemplate(w, "index", data)
 }
