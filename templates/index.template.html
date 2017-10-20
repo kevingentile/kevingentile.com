@@ -1,8 +1,9 @@
 <!DOCTYPE HTML>
 
 <html>
+	{{ with .page}}
 	<head>
-		<title>Portfolio Home</title>
+		<title>{{.Title}}</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]>
@@ -11,7 +12,8 @@
 		<!--[if lte IE 8]>
 		<link rel="stylesheet" href="../assets/css/ie8.css"/><![endif]-->
 	</head>
-	<body class="homepage">
+	<body class="{{.Class}}">
+	{{ end }}
 		<div id="page-wrapper">
 			{{ template "header" . }}
 			{{ template "banner" . }}
