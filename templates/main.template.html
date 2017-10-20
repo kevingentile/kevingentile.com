@@ -1,7 +1,6 @@
 {{ define "main" }}
 <!-- Main -->
 <div class="wrapper style1">
-
     <div class="container">
         <article id="main" class="special">
             <header>
@@ -13,12 +12,8 @@
                 {{ end }}
             </header>
             {{ range .articles }} {{ template "article" . }}
-            <hr />
             {{ end }}
-
-
     </div>
-
 </div>
 
 {{ end }}
