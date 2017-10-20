@@ -7,7 +7,7 @@ import "github.com/LaughingCabbage/kevingentile.com/web"
 //	Link  string
 //	Class string
 //}
-var nav = web.Nav{
+var Nav = web.Nav{
 	Buttons: []web.NavButton{
 		{Name: "Home",
 			Link: "../index.html"},
@@ -15,8 +15,7 @@ var nav = web.Nav{
 			Link: "https://github.com/laughingcabbage/",
 		},
 		{Name: "Contact",
-			Link:  "#contact",
-			Class: "scrolly",
+			Link: "../contact.html",
 		},
 	},
 }
@@ -26,7 +25,7 @@ var nav = web.Nav{
 //	Link  string
 //	Icon  string
 //}
-var footer = web.ContactBar{
+var Footer = web.ContactBar{
 	Header: "Want to stay in touch?",
 	Body:   "Connect on social media!",
 	Contacts: []web.ContactButton{
@@ -49,7 +48,7 @@ var footer = web.ContactBar{
 	},
 }
 
-var scriptsCommon = []web.Script{
+var ScriptsCommon = []web.Script{
 	"../assets/js/jquery.min.js",
 	"../assets/js/jquery.dropotron.min.js",
 	"../assets/js/jquery.scrolly.min.js",
