@@ -15,10 +15,6 @@ func main() {
 	// "http://kevingentile.com/index.html"
 	router.HandleFunc("/", makeHandler(IndexHandler))
 	router.HandleFunc("/index.html", makeHandler(IndexHandler))
-	// "http://kevingentile.com/left-sidebar.html"
-	//router.HandleFunc("/left-sidebar.html", makeHandler(leftHandler))
-	// "http://kevingentile.com/right-sidebar.html"
-	//router.HandleFunc("/right-sidebar.html", makeHandler(rightHandler))
 	// "http://kevingentile.com/contact.html"
 	router.HandleFunc("/contact.html", makeHandler(contactHandler))
 	// "http://kevingentile.com/assets/*"
