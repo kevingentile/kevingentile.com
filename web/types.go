@@ -1,5 +1,13 @@
 package web
 
+//Data is used to pass various child structures from a handler for templating
+type Data map[string]interface{}
+
+type Page struct {
+	Title string
+	Class string
+}
+
 //Carousel contains the resources to implement a reel carousel.
 type Carousel struct {
 	Articles []ReelArticle
@@ -25,9 +33,10 @@ type ContactButton struct {
 	Icon  string
 }
 
-type Heading struct {
+type PageHeading struct {
 	Header string
 	Body   string
+	Button bool
 }
 
 //Nav contains the structure to implement a navigation bar.
@@ -44,3 +53,15 @@ type NavButton struct {
 
 //Script holds the path to a script
 type Script string
+
+type Paragraph string
+
+type PageArticle struct {
+	Heading    string
+	Paragraphs []Paragraph
+}
+
+type PageMain struct {
+	Heading string
+	Body    string
+}
