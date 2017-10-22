@@ -29,9 +29,9 @@ func ParseTemplates() *template.Template {
 	return tmp
 }
 
-func renderTemplate(w http.ResponseWriter, tmpl string) {
-	tmpl = tmpl + ".template.html"                 //add html tag
-	err := templates.ExecuteTemplate(w, tmpl, nil) //attempt to render the template
+func renderTemplate(w http.ResponseWriter, tmpl string, data interface{}) {
+	tmpl = tmpl + ".template.html"                  //add html tag
+	err := templates.ExecuteTemplate(w, tmpl, data) //attempt to render the template
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError) //Template not found/ not rendered
 	}

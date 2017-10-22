@@ -1,20 +1,30 @@
 {{ define "header" }}
 <!-- Header -->
 <div id="header">
-
+    {{ template "nav" . }}
     <!-- Inner -->
     <div class="inner">
+        {{ with .heading }}
         <header>
-            <h1>:)</a></h1>
+            <h1>{{.Header}}</a></h1>
             <hr />
-            <p><a href="mailto:gentile_kevin94@hotmail.com">Welcome!</a></p>
+            <p>{{.Body}}</a></p>
         </header>
+        {{ if .Button }}
         <footer>
             <a href="#banner" class="button circled scrolly">Enter</a>
         </footer>
+        {{ end }}
+        {{ end }}
     </div>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-90462748-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-    {{ template "nav" . }}
-
+        gtag('config', 'UA-90462748-1');
+    </script>
 </div>
 {{ end }}

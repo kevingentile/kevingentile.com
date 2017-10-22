@@ -2,41 +2,10 @@
 <!-- Carousel -->
 <section class="carousel">
     <div class="reel">
-
-        <article>
-            <a href="https://github.com/LaughingCabbage/kevingentile.com" class="image featured"><img src="../images/pic01.jpg" alt="" /></a>
-            <header>
-                <h3><a href="#">kevingentile.com</a></h3>
-            </header>
-            <p>This website! Built using Go and the HTML5UP site template.</p>
-            <p></p>
-        </article>
-
-        <article>
-            <a href="https://github.com/LaughingCabbage/isoChar" class="image featured"><img src="../images/pic02.jpg" alt="" /></a>
-            <header>
-                <h3><a href="#">Image Text Processing</a></h3>
-            </header>
-            <p>This program draws a box around letters in an image.</p>
-        </article>
-
-        <article>
-            <a href="https://github.com/LaughingCabbage/Asteroid" class="image featured"><img src="../images/pic03.jpg" alt="" /></a>
-            <header>
-                <h3><a href="#">Arcade Game</a></h3>
-            </header>
-            <p>A game built with the SFML framework in C++</p>
-            <p></p>
-        </article>
-
-        <article>
-            <a href="https://github.com/LaughingCabbage/goLinks" class="image featured"><img src="../images/pic04.jpg" alt="" /></a>
-            <header>
-                <h3><a href="#">Blockchain</a></h3>
-            </header>
-            <p>Simple blockchain built in Go to better understand cryptocurrency.</p>
-        </article>
-
+        {{ with .carousel }}
+            {{ range .Articles }} {{template "reelArticle" .}}
+            {{ end }}
+        {{ end }}
     </div>
 </section>
 

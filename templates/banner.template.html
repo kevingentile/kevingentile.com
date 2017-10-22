@@ -1,9 +1,11 @@
 {{ define "banner" }}
 <!-- Banner -->
 <section id="banner">
+    {{ with .banner }}
     <header>
-        <h2><strong>Welcome to my portfolio!</strong></h2>
-        <p>Here lies the fruits of my labor...</p>
+        <h2><strong>{{.Header}}</strong></h2>
+        <p>{{.Body}}</p>
     </header>
+    {{ end }}
 </section>
 {{ end }}

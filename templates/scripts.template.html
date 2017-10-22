@@ -1,12 +1,9 @@
 {{ define "scripts" }}
 <!-- Scripts -->
-<script src="../assets/js/jquery.min.js"></script>
-<script src="../assets/js/jquery.dropotron.min.js"></script>
-<script src="../assets/js/jquery.scrolly.min.js"></script>
-<script src="../assets/js/jquery.onvisible.min.js"></script>
-<script src="../assets/js/skel.min.js"></script>
-<script src="../assets/js/util.js"></script>
+{{ range .scripts }}
+    <script src="{{.}}"></script>
+{{ end }}
 <!--[if lte IE 8]>
 <script src="../assets/js/ie/respond.min.js"></script><![endif]-->
-<script src="../assets/js/main.js"></script>
+
 {{ end }}
