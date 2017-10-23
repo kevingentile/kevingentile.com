@@ -11,11 +11,14 @@ var Nav = web.Nav{
 	Buttons: []web.NavButton{
 		{Name: "Home",
 			Link: "../index.html"},
-		{Name: "GitHub",
-			Link: "https://github.com/laughingcabbage/",
+		{Name: "Links",
+			Link: "../links.html",
 		},
 		{Name: "Contact",
 			Link: "../contact.html",
+		},
+		{Name: "GitHub",
+			Link: "https://github.com/laughingcabbage/",
 		},
 	},
 }
@@ -57,3 +60,5 @@ var ScriptsCommon = []web.Script{
 	"../assets/js/util.js",
 	"../assets/js/main.js",
 }
+
+var DataCommon = web.Data{"nav": Nav, "footer": Footer, "scripts": ScriptsCommon}

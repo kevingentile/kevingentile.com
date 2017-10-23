@@ -65,3 +65,13 @@ type PageMain struct {
 	Heading string
 	Body    string
 }
+
+type PageLink struct {
+	Title       string
+	Link        string
+	Description string
+}
+
+type LinkList struct {
+	Links []PageLink
+}

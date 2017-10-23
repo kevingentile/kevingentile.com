@@ -16,9 +16,11 @@ func main() {
 	router.HandleFunc("/", makeHandler(IndexHandler))
 	router.HandleFunc("/index.html", makeHandler(IndexHandler))
 	// "http://kevingentile.com/contact.html"
-	router.HandleFunc("/contact.html", makeHandler(contactHandler))
+	router.HandleFunc("/contact.html", makeHandler(ContactHandler))
+	// "http://kevingentile.com/links.html"
+	router.HandleFunc("/links.html", makeHandler(LinksHandler))
 	// "http://kevingentile.com/assets/*"
-	router.PathPrefix("/assets/").Handler(http.StripPrefix("/assets/", http.FileServer(http.Dir("assets")))) //TODO this seems excessive...
+	router.PathPrefix("/assets/").Handler(http.StripPrefix("/assets/", http.FileServer(http.Dir("assets"))))
 	// "http://kevingentile.com/images/*"
 	router.PathPrefix("/images/").Handler(http.StripPrefix("/images/", http.FileServer(http.Dir("images"))))
 
