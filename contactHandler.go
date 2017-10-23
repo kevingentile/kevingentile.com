@@ -6,7 +6,7 @@ import (
 	"github.com/LaughingCabbage/kevingentile.com/web"
 )
 
-func contactHandler(w http.ResponseWriter, r *http.Request) {
+func ContactHandler(w http.ResponseWriter, r *http.Request) {
 	//type Page struct {
 	//	Title string
 	//	Class string
