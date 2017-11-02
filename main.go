@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	log.Println("keivngentile.com Web Start")
+	log.Println("keivngentile.com Web Start PORT: " + os.Getenv("PORT"))
 	router := mux.NewRouter() // Create gorilla router
 
 	// "http://kevingentile.com/index.html"
@@ -24,7 +24,7 @@ func main() {
 	// "http://kevingentile.com/images/*"
 	router.PathPrefix("/images/").Handler(http.StripPrefix("/images/", http.FileServer(http.Dir("images"))))
 
-	//log.Println(templates.DefinedTemplates())
+	log.Println(templates.DefinedTemplates())
 	log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), router)) // Listen on port defined by environment variable PORT
 
 }
