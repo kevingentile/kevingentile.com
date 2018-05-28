@@ -3,9 +3,9 @@ package main
 import (
 	"encoding/json"
 	"net/http"
+	"os"
 
 	tracker "github.com/LaughingCabbage/fortnite-tracker/v1"
-	"github.com/LaughingCabbage/tracker-bot/key"
 )
 
 // Data holds response data to serve as json
@@ -16,8 +16,8 @@ type Data struct {
 }
 
 func handleFortniteData(w http.ResponseWriter, r *http.Request) {
-	Key := key.LoadKey(".key")
-	profile, err := tracker.GetProfile("pc", "laughingcabbage", Key.Value)
+	key := os.Getenv("KEY")
+	profile, err := tracker.GetProfile("pc", "laughingcabbage", key)
 	if err != nil {
 		panic(err)
 	}
