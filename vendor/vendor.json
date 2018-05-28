@@ -3,6 +3,18 @@
 	"ignore": "test",
 	"package": [
 		{
+			"checksumSHA1": "3haNFy2u94Fx6cyE0DF493nP0oA=",
+			"path": "github.com/LaughingCabbage/fortnite-tracker/v1",
+			"revision": "7aee4a917e599c43c0dd6d597eca485dcb79b115",
+			"revisionTime": "2018-05-28T16:58:13Z"
+		},
+		{
+			"checksumSHA1": "IkPM2QLv9urri7S49wzroQx9oXA=",
+			"path": "github.com/gorilla/context",
+			"revision": "08b5f424b9271eedf6f9f0ce86cb9396ed337a42",
+			"revisionTime": "2016-08-17T18:46:32Z"
+		},
+		{
 			"checksumSHA1": "VQCWhB87h6+5rzZM7uKK6N7q1RI=",
 			"path": "github.com/gorilla/mux",
 			"revision": "24fca303ac6da784b9e8269f724ddeb0b2eea5e7",
