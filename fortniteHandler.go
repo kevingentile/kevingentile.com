@@ -15,6 +15,7 @@ type Data struct {
 	Kills int     `json:"kills"`
 }
 
+// TODO rate limit this handler
 func handleFortniteData(w http.ResponseWriter, r *http.Request) {
 	key := os.Getenv("KEY")
 	profile, err := tracker.GetProfile("pc", "laughingcabbage", key)

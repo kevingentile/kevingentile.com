@@ -19,7 +19,7 @@ func main() {
 	router.HandleFunc("/contact.html", makeHandler(ContactHandler))
 	// "http://kevingentile.com/links.html"
 	router.HandleFunc("/links.html", makeHandler(LinksHandler))
-	// "http://kevingentile.com/obs/laughingcabbage" JSON
+	// "http://kevingentile.com/obs/laughingcabbage" JSON // TODO rate limit this handler
 	router.HandleFunc("/obs/laughingcabbage", handleFortniteData)
 	// "http://kevingentile.com/assets/*"
 	router.PathPrefix("/assets/").Handler(http.StripPrefix("/assets/", http.FileServer(http.Dir("assets"))))
@@ -27,6 +27,6 @@ func main() {
 	router.PathPrefix("/images/").Handler(http.StripPrefix("/images/", http.FileServer(http.Dir("images"))))
 
 	log.Println(templates.DefinedTemplates())
-	log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), router)) // Listen on port defined by environment variable PORT
+	log.Fatal(http.ListenAndServe(":8080", router)) // Listen on port defined by environment variable PORT
 
 }
