@@ -27,6 +27,6 @@ func main() {
 	router.PathPrefix("/images/").Handler(http.StripPrefix("/images/", http.FileServer(http.Dir("images"))))
 
 	log.Println(templates.DefinedTemplates())
-	log.Fatal(http.ListenAndServe(":8080", router)) // Listen on port defined by environment variable PORT
+	log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), router)) // Listen on port defined by environment variable PORT
 
 }
