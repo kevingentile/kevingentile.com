@@ -32,7 +32,7 @@ func handleFortniteData(w http.ResponseWriter, r *http.Request) {
 	handleError(err)
 	data.Wins = wins
 
-	kdr, err := tracker.GetKDR(profile)
+	kdr, err := tracker.GetCurrentKDR(profile)
 	handleError(err)
 	data.KDR = kdr
 
