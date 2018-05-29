@@ -11,6 +11,18 @@ type StatField struct {
 	DisplayValue string  `json:"displayValue"`
 }
 
+// FloatStatField is an abstract JSON object for a decimal stat field
+type FloatStatField struct {
+	Label        string  `json:"label"`
+	Field        string  `json:"field"`
+	Category     string  `json:"category"`
+	ValueDec     float64 `json:"valueDec"`
+	Value        string  `json:"value"`
+	Rank         int     `json:"rank"`
+	Percentile   float64 `json:"percentile"`
+	DisplayValue string  `json:"displayValue"`
+}
+
 // Profile json
 type Profile struct {
 	AccountID        string        `json:"accountId"`
@@ -25,21 +37,21 @@ type Profile struct {
 
 // Stat json
 type Stat struct {
-	TRNRating     StatField `json:"trnRating"`
-	Score         StatField `json:"score"`
-	Top1          StatField `json:"top1"`
-	Top3          StatField `json:"top3"`
-	Top5          StatField `json:"top5"`
-	Top6          StatField `json:"top6"`
-	Top10         StatField `json:"top10"`
-	Top12         StatField `json:"top12"`
-	Top25         StatField `json:"top25"`
-	KD            StatField `json:"kd"`
-	WinRatio      StatField `json:"winRatio"`
-	Matches       StatField `json:"matches"`
-	Kills         StatField `json:"kills"`
-	KPG           StatField `json:"kpg"`
-	ScorePerMatch StatField `json:"scorePerMatch"`
+	TRNRating     StatField      `json:"trnRating"`
+	Score         StatField      `json:"score"`
+	Top1          StatField      `json:"top1"`
+	Top3          StatField      `json:"top3"`
+	Top5          StatField      `json:"top5"`
+	Top6          StatField      `json:"top6"`
+	Top10         StatField      `json:"top10"`
+	Top12         StatField      `json:"top12"`
+	Top25         StatField      `json:"top25"`
+	KD            FloatStatField `json:"kd"`
+	WinRatio      FloatStatField `json:"winRatio"`
+	Matches       StatField      `json:"matches"`
+	Kills         StatField      `json:"kills"`
+	KPG           FloatStatField `json:"kpg"`
+	ScorePerMatch FloatStatField `json:"scorePerMatch"`
 }
 
 // Personal
