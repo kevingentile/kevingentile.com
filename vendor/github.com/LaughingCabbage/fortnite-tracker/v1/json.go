@@ -1,3 +1,5 @@
+// Copyright 2018 Kevin Gentile.
+// Licensed under GNU General Public License v3.0
 package tracker
 
 // StatField is an abstract JSON object for a stats field

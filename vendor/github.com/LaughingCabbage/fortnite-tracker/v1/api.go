@@ -1,3 +1,5 @@
+// Copyright 2018 Kevin Gentile.
+// Licensed under GNU General Public License v3.0
 package tracker
 
 import (
@@ -101,9 +103,21 @@ func lookupLifetimeStat(profile Profile, key string) (string, error) {
 // GetCurrentKDR returns the kdr for the current season
 func GetCurrentKDR(profile Profile) (float64, error) {
 	stats := profile.Stats
-	kdrAverage := (stats.CurrP10.KD.ValueDec +
-		stats.CurrP2.KD.ValueDec +
-		stats.CurrP9.KD.ValueDec) / 3
+
+	totalKills := stats.CurrP10.Kills.ValueInt +
+		stats.CurrP2.Kills.ValueInt +
+		stats.CurrP9.Kills.ValueInt
+
+	totalMatches := stats.CurrP10.Matches.ValueInt +
+		stats.CurrP2.Matches.ValueInt +
+		stats.CurrP9.Matches.ValueInt
+
+	totalWins := stats.CurrP10.Top1.ValueInt +
+		stats.CurrP2.Top1.ValueInt +
+		stats.CurrP9.Top1.ValueInt
+
+	kdrAverage := float64(totalKills) / float64(totalMatches-totalWins)
+
 	kdr := math.Round(kdrAverage*100) / 100
 	return kdr, nil
 }

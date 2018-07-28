@@ -3,10 +3,10 @@
 	"ignore": "test",
 	"package": [
 		{
-			"checksumSHA1": "VI1GKRICCu//IA7Fx6DSz6MCTK0=",
+			"checksumSHA1": "YSxIUGvzsyx0Hw017PpFOYcJtZI=",
 			"path": "github.com/LaughingCabbage/fortnite-tracker/v1",
-			"revision": "b1613952896b366ec3899d7fdf5f37885ec4a1a5",
-			"revisionTime": "2018-05-29T23:18:21Z"
+			"revision": "b55d4af785a40e5332fb53f666b4e93aa3f56bad",
+			"revisionTime": "2018-07-28T16:05:59Z"
 		},
 		{
 			"checksumSHA1": "IkPM2QLv9urri7S49wzroQx9oXA=",
