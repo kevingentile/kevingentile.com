@@ -1,33 +1,37 @@
+<!doctype html>
 <html>
-    <head>
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="./style.css">
-        <link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet"> 
-    </head>
-    <body>
-        <div id="app">
-            <table>
-                <col align="left" width="50">
-                <col align="left">
-                <tr>
-                    <th class="gold"><i class="fas fa-trophy"></i></th>
-                    <th class="white">{{stats.wins}}</th>
-                </tr>
-                <tr class="white">
-                    <th><i class="fas fa-skull"></i></th>
-                    <th>{{stats.kills}}</th>
-                </tr>
-                <tr>
-                    <th class="silver"><i class="fas fa-balance-scale"></i></th>
-                    <th class="white">{{stats.kdr}}</th>
-                </tr>
 
-            </table>
-        </div>
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-        <script type="text/javascript" src="./tracker.js" type="module"></script>
-    </body>
-    
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/assets/obs/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
+</head>
+
+<body>
+    <div id="app">
+        <table>
+            <col align="left" width="50">
+            <col align="left">
+            <tr>
+                <th class="gold"><i class="fas fa-trophy"></i></th>
+                <th class="white">{{stats.wins}}</th>
+            </tr>
+            <tr class="white">
+                <th><i class="fas fa-skull"></i></th>
+                <th>{{stats.kills}}</th>
+            </tr>
+            <tr>
+                <th class="silver"><i class="fas fa-balance-scale"></i></th>
+                <th class="white">{{stats.kdr}}</th>
+            </tr>
+
+        </table>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript" src="/assets/obs/tracker.js" type="module"></script>
+</body>
+
 
 </html>

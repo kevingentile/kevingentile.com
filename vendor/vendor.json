@@ -29,6 +29,18 @@
 			"revisionTime": "2019-02-23T07:06:54Z"
 		},
 		{
+			"checksumSHA1": "dz/sCM+JMi+y0Tt//4Yi16cGZeo=",
+			"path": "github.com/LaughingCabbage/kevingentile.com",
+			"revision": "bd622e85dff85e95c7cf6836fb6fe650834e3fd5",
+			"revisionTime": "2019-02-23T07:28:46Z"
+		},
+		{
+			"checksumSHA1": "j3H0wQLO1B6Shw9uzrjqTBx8zlk=",
+			"path": "github.com/LaughingCabbage/kevingentile.com/web",
+			"revision": "bd622e85dff85e95c7cf6836fb6fe650834e3fd5",
+			"revisionTime": "2019-02-23T07:28:46Z"
+		},
+		{
 			"checksumSHA1": "oHwfghigjTz8Xs+ssxwdl/atb44=",
 			"path": "github.com/gorilla/context",
 			"revision": "51ce91d2eaddeca0ef29a71d766bb3634dadf729",
@@ -43,8 +55,14 @@
 		{
 			"checksumSHA1": "rlgOfJPbgaw4rF+HMNnKpQSkxfE=",
 			"path": "github.com/laughingcabbage/kevingentile.com",
-			"revision": "88c962f2ca38bc1180a406df0f3563a0b513cf61",
-			"revisionTime": "2019-02-23T06:52:50Z"
+			"revision": "bd622e85dff85e95c7cf6836fb6fe650834e3fd5",
+			"revisionTime": "2019-02-23T07:28:46Z"
+		},
+		{
+			"checksumSHA1": "x9dl/QipCsG0+3BnmcA/apzz5aw=",
+			"path": "github.com/laughingcabbage/kevingentile.com/web",
+			"revision": "bd622e85dff85e95c7cf6836fb6fe650834e3fd5",
+			"revisionTime": "2019-02-23T07:28:46Z"
 		},
 		{
 			"checksumSHA1": "GtamqiJoL7PGHsN454AoffBFMa8=",

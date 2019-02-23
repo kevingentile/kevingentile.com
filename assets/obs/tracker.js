@@ -1,7 +1,7 @@
 var app = new Vue({
     el: '#app',
     data: {
-        interval: 60000,
+        interval: 30000,
         stats: {
             kills: 0,
             wins: 0,
@@ -21,7 +21,8 @@ var app = new Vue({
         },
         getData: function () {
             var self = this;
-            axios.get(window.location.pathname).then(response => {
+            var apiRoute = window.location.pathname.split('fortnite')[1]
+            axios.get(window.location.origin + '/obs' + apiRoute).then(response => {
                 self.stats = response.data;
             });
         }
