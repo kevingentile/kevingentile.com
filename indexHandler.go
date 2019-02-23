@@ -8,35 +8,16 @@ import (
 
 func IndexHandler(w http.ResponseWriter, r *http.Request) {
 
-	//type Page struct {
-	//	Title string
-	//	Class string
-	//}
 	page := web.Page{
 		Title: "Portfolio Home",
 		Class: "homepage",
 	}
 
-	//type Heading struct {
-	//	Header string
-	//	Body   string
-	//}
-	heading := web.PageHeading{
-		Header: ":)",
-		Body:   "Welcome!",
-		Button: true,
-	}
 	banner := web.PageHeading{
 		Header: "Welcome to my portfolio!",
 		Body:   "Here lies the fruits of my labor...",
 	}
 
-	//type ReelArticle struct {
-	//	Title     string
-	//	Body      string
-	//	ImageLink string
-	//	PicPath   string
-	//}
 	carousel := web.Carousel{
 		Articles: []web.ReelArticle{
 			{Title: "kevingentile.com",
@@ -61,7 +42,7 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 			},
 		},
 	}
-	data := web.Data{"page": page, "heading": heading, "carousel": carousel, "nav": Nav, "footer": Footer, "banner": banner, "scripts": ScriptsCommon}
+	data := web.Data{"page": page, "carousel": carousel, "nav": Nav, "footer": Footer, "banner": banner, "scripts": ScriptsCommon}
 	renderTemplate(w, "index", data)
 
 }
