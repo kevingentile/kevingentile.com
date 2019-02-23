@@ -5,6 +5,8 @@ import (
 	"net/http"
 	"os"
 
+	"github.com/gorilla/mux"
+
 	tracker "github.com/LaughingCabbage/fortnite-tracker/v1"
 )
 
@@ -17,8 +19,9 @@ type Data struct {
 
 // TODO rate limit this handler
 func handleFortniteData(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
 	key := os.Getenv("KEY")
-	profile, err := tracker.GetProfile("pc", "laughingcabbage", key)
+	profile, err := tracker.GetProfile(vars["platform"], vars["username"], key)
 	if err != nil {
 		handleError(err, w)
 	}

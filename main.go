@@ -25,7 +25,7 @@ func main() {
 	// "http://kevingentile.com/links.html"
 	router.HandleFunc("/links.html", makeHandler(LinksHandler))
 	// "http://kevingentile.com/obs/laughingcabbage" JSON // TODO rate limit this handler
-	router.HandleFunc("/obs/laughingcabbage", rateLimit(handleFortniteData, &limiter))
+	router.HandleFunc("/obs/{platform}/{username}", rateLimit(handleFortniteData, &limiter))
 	// "http://kevingentile.com/assets/*"
 	router.PathPrefix("/assets/").Handler(http.StripPrefix("/assets/", http.FileServer(http.Dir("assets"))))
 	// "http://kevingentile.com/images/*"

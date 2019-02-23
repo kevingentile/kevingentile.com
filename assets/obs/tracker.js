@@ -8,21 +8,20 @@ var app = new Vue({
             kdr: 0.0
         }
     },
-    created: function(){
+    created: function () {
         this.start();
     },
-    methods:{
-        start: function(){
+    methods: {
+        start: function () {
             var self = this;
             self.getData();
-            setInterval(function(){
+            setInterval(function () {
                 self.getData();
             }, this.interval);
         },
-        getData: function(){
+        getData: function () {
             var self = this;
-            axios.get(`/obs/laughingcabbage`)
-            .then(response => {
+            axios.get(window.location.pathname).then(response => {
                 self.stats = response.data;
             });
         }
