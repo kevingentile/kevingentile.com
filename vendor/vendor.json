@@ -21,6 +21,10 @@
 			"revisionTime": "2018-04-03T18:23:30Z"
 		},
 		{
+			"path": "github.com/laungingcabbage/fortnite-tracker",
+			"revision": ""
+		},
+		{
 			"checksumSHA1": "GtamqiJoL7PGHsN454AoffBFMa8=",
 			"path": "golang.org/x/net/context",
 			"revision": "61147c48b25b599e5b561d2e9c4f3e1ef489ca41",
