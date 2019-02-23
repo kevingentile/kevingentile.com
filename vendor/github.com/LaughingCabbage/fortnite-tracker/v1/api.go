@@ -17,20 +17,25 @@ func GetProfile(platform, name, APIToken string) (Profile, error) {
 	client := &http.Client{}
 	req, err := http.NewRequest("GET", ProfileRoute+platform+"/"+name, nil)
 	if err != nil {
-		log.Fatal("failed to create profile request", err)
+		log.Println("failed to create profile request", err)
 		return profile, err
 	}
 	req.Header.Add(headerKeyName, APIToken)
 	resp, err := client.Do(req)
 	if err != nil {
-		log.Fatal("failed to get profile from server", err)
+		log.Println("failed to get profile from server", err)
 		return profile, err
 	}
 	defer resp.Body.Close()
-	body, _ := ioutil.ReadAll(resp.Body)
+
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		log.Println("failed to read response body")
+	}
+
 	err = json.Unmarshal(body, &profile)
 	if err != nil {
-		log.Fatal("failed to unmarshal profile json")
+		log.Println("failed to unmarshal profile json")
 		return profile, err
 	}
 	return profile, nil
@@ -42,10 +47,12 @@ func GetWins(profile Profile) (int, error) {
 	if err != nil {
 		return -1, err
 	}
+
 	wins, err := strconv.Atoi(winsString)
 	if err != nil {
 		return -1, err
 	}
+
 	return wins, nil
 }
 
@@ -55,10 +62,12 @@ func GetTop3s(profile Profile) (int, error) {
 	if err != nil {
 		return -1, err
 	}
+
 	top3, err := strconv.Atoi(top3String)
 	if err != nil {
 		return -1, err
 	}
+
 	return top3, nil
 }
 

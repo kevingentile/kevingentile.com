@@ -3,39 +3,117 @@
 	"ignore": "test",
 	"package": [
 		{
-			"checksumSHA1": "YSxIUGvzsyx0Hw017PpFOYcJtZI=",
-			"path": "github.com/LaughingCabbage/fortnite-tracker/v1",
-			"revision": "b55d4af785a40e5332fb53f666b4e93aa3f56bad",
-			"revisionTime": "2018-07-28T16:05:59Z"
-		},
-		{
-			"checksumSHA1": "IkPM2QLv9urri7S49wzroQx9oXA=",
-			"path": "github.com/gorilla/context",
-			"revision": "08b5f424b9271eedf6f9f0ce86cb9396ed337a42",
-			"revisionTime": "2016-08-17T18:46:32Z"
-		},
-		{
-			"checksumSHA1": "vBbcOrPpPnjQk+YYIA3nPm/EXGM=",
-			"path": "github.com/gorilla/mux",
-			"revision": "94231ffd98496cbcb1c15b7bf2a9edfd5f852cd4",
-			"revisionTime": "2018-04-03T18:23:30Z"
-		},
-		{
-			"path": "github.com/laungingcabbage/fortnite-tracker",
+			"path": "bytes",
 			"revision": ""
+		},
+		{
+			"path": "context",
+			"revision": ""
+		},
+		{
+			"path": "encoding/json",
+			"revision": ""
+		},
+		{
+			"path": "errors",
+			"revision": ""
+		},
+		{
+			"path": "fmt",
+			"revision": ""
+		},
+		{
+			"checksumSHA1": "u1Avp9hz6NOFzi7NqJlmMg5i2pU=",
+			"path": "github.com/LaughingCabbage/fortnite-tracker/v1",
+			"revision": "829ee36e5614a05347fdcc31f36ba8e66e83620c",
+			"revisionTime": "2019-02-23T07:06:54Z"
+		},
+		{
+			"checksumSHA1": "oHwfghigjTz8Xs+ssxwdl/atb44=",
+			"path": "github.com/gorilla/context",
+			"revision": "51ce91d2eaddeca0ef29a71d766bb3634dadf729",
+			"revisionTime": "2018-10-12T15:35:48Z"
+		},
+		{
+			"checksumSHA1": "9YQYg2PkA7lkFuUyCQGUv0vX5zA=",
+			"path": "github.com/gorilla/mux",
+			"revision": "8559a4f775fc329165fe32bd4c2543de8ada8fce",
+			"revisionTime": "2019-02-17T15:38:49Z"
+		},
+		{
+			"checksumSHA1": "rlgOfJPbgaw4rF+HMNnKpQSkxfE=",
+			"path": "github.com/laughingcabbage/kevingentile.com",
+			"revision": "88c962f2ca38bc1180a406df0f3563a0b513cf61",
+			"revisionTime": "2019-02-23T06:52:50Z"
 		},
 		{
 			"checksumSHA1": "GtamqiJoL7PGHsN454AoffBFMa8=",
 			"path": "golang.org/x/net/context",
-			"revision": "61147c48b25b599e5b561d2e9c4f3e1ef489ca41",
-			"revisionTime": "2017-03-19T02:15:06Z"
+			"revision": "3a22650c66bd7f4fb6d1e8072ffd7b75c8a27898",
+			"revisionTime": "2019-02-11T12:35:32Z"
 		},
 		{
-			"checksumSHA1": "CCw5z0nFydNs8Gep87Bl5azBs1c=",
+			"checksumSHA1": "7Ev/X4Xe8P3961myez/hBKO05ig=",
 			"path": "golang.org/x/time/rate",
-			"revision": "fbb02b2291d28baffd63558aa44b4b56f178d650",
-			"revisionTime": "2018-04-12T16:56:04Z"
+			"revision": "85acf8d2951cb2a3bde7632f9ff273ef0379bcbd",
+			"revisionTime": "2018-11-08T03:19:45Z"
+		},
+		{
+			"path": "html/template",
+			"revision": ""
+		},
+		{
+			"path": "io/ioutil",
+			"revision": ""
+		},
+		{
+			"path": "log",
+			"revision": ""
+		},
+		{
+			"path": "math",
+			"revision": ""
+		},
+		{
+			"path": "net/http",
+			"revision": ""
+		},
+		{
+			"path": "net/url",
+			"revision": ""
+		},
+		{
+			"path": "os",
+			"revision": ""
+		},
+		{
+			"path": "path",
+			"revision": ""
+		},
+		{
+			"path": "path/filepath",
+			"revision": ""
+		},
+		{
+			"path": "regexp",
+			"revision": ""
+		},
+		{
+			"path": "strconv",
+			"revision": ""
+		},
+		{
+			"path": "strings",
+			"revision": ""
+		},
+		{
+			"path": "sync",
+			"revision": ""
+		},
+		{
+			"path": "time",
+			"revision": ""
 		}
 	],
-	"rootPath": "github.com/LaughingCabbage/kevingentile.com"
+	"rootPath": "github.com/laughingcabbage/kevingentile.com"
 }
