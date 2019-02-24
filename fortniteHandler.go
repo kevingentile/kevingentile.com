@@ -17,39 +17,53 @@ type Data struct {
 	Kills int     `json:"kills"`
 }
 
-// TODO rate limit this handler
 func handleFortniteData(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	key := os.Getenv("KEY")
 	profile, err := tracker.GetProfile(vars["platform"], vars["username"], key)
 	if err != nil {
 		handleError(err, w)
+		return
 	}
 	data := Data{}
 
 	kills, err := tracker.GetKills(profile)
-	handleError(err, w)
+	if err != nil {
+		handleError(err, w)
+		return
+	}
 	data.Kills = kills
 
 	wins, err := tracker.GetWins(profile)
-	handleError(err, w)
+	if err != nil {
+		handleError(err, w)
+		return
+	}
 	data.Wins = wins
 
 	kdr, err := tracker.GetCurrentKDR(profile)
-	handleError(err, w)
+	if err != nil {
+		handleError(err, w)
+		return
+	}
 	data.KDR = kdr
 
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(data)
+	err = json.NewEncoder(w).Encode(data)
+	if err != nil {
+		handleError(err, w)
+		return
+	}
 }
 
 func handleError(err error, w http.ResponseWriter) {
 	if err != nil {
 		data := Data{
 			Wins:  -1,
-			KDR:   -10.0,
-			Kills: 2,
+			KDR:   -1,
+			Kills: -1,
 		}
+		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(data)
 	}
 }

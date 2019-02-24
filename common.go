@@ -15,9 +15,9 @@ var Nav = web.Nav{
 		{Name: "GitHub",
 			Link: "https://github.com/laughingcabbage/",
 		},
-		// {Name: "OBS",
-		// 	Link: "/assets/obs/fortnite.html",
-		// },
+		{Name: "Fortnite OBS",
+			Link: "../fortnite.html",
+		},
 	},
 }
 
