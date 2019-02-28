@@ -1,5 +1,6 @@
-table{
+table {
     font-family: 'Space Mono', monospace;
+    overflow: hidden;
 }
 
 
