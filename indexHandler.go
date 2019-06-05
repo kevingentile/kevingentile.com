@@ -3,7 +3,7 @@ package main
 import (
 	"net/http"
 
-	"github.com/LaughingCabbage/kevingentile.com/web"
+	"github.com/kevingentile/kevingentile.com/web"
 )
 
 func IndexHandler(w http.ResponseWriter, r *http.Request) {
@@ -41,22 +41,22 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 		Articles: []web.ReelArticle{
 			{Title: "kevingentile.com",
 				Body:      "This website! Built using Go and the HTML5UP site template.",
-				ImageLink: "https://github.com/LaughingCabbage/kevingentile.com",
+				ImageLink: "https://github.com/kevingentile/kevingentile.com",
 				PicPath:   "../images/pic01.jpg",
 			},
 			{Title: "goLinks",
 				Body:      "A blockchain library and data integrity tool built in Go",
-				ImageLink: "https://github.com/LaughingCabbage/goLinks",
+				ImageLink: "https://github.com/kevingentile/goLinks",
 				PicPath:   "../images/pic04.jpg",
 			},
 			{Title: "isoChar",
 				Body:      "Image processing to for text tracing.",
-				ImageLink: "https://github.com/LaughingCabbage/isoChar",
+				ImageLink: "https://github.com/kevingentile/isoChar",
 				PicPath:   "../images/pic02.jpg",
 			},
 			{Title: "Arcade Game",
 				Body:      "A game built with the SFML framework in C++",
-				ImageLink: "https://github.com/LaughingCabbage/Asteroid",
+				ImageLink: "https://github.com/kevingentile/Asteroid",
 				PicPath:   "../images/pic03.jpg",
 			},
 		},

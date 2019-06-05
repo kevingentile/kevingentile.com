@@ -1,8 +1,11 @@
-kevingentile.com:
-  image: laughingcabbage/kevingentile.com
+version: '3.2'
+services:
+  kevingentile.com:
+    image: kevingentile/kevingentile.com
 
-  expose:
-    - 8080
-  environment:
-    - "PORT=8080"
-    - "VIRTUAL_HOST=kevingentile.com"
+    ports:
+      - "8080:80
+
+    environment:
+      - "PORT=80"
+    container_name: kevingentile.com

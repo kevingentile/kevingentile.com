@@ -3,7 +3,7 @@ package main
 import (
 	"net/http"
 
-	"github.com/LaughingCabbage/kevingentile.com/web"
+	"github.com/kevingentile/kevingentile.com/web"
 )
 
 func LinksHandler(w http.ResponseWriter, r *http.Request) {

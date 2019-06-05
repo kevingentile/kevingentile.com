@@ -1,6 +1,6 @@
 package main
 
-import "github.com/LaughingCabbage/kevingentile.com/web"
+import "github.com/kevingentile/kevingentile.com/web"
 
 //type NavButton struct {
 //	Name  string
@@ -18,7 +18,7 @@ var Nav = web.Nav{
 			Link: "../contact.html",
 		},
 		{Name: "GitHub",
-			Link: "https://github.com/laughingcabbage/",
+			Link: "https://github.com/kevingentile/",
 		},
 	},
 }
@@ -38,7 +38,7 @@ var Footer = web.ContactBar{
 		},
 		{Label: "GitHub",
 			Icon: "fa-github",
-			Link: "https://www.github.com/laughingcabbage",
+			Link: "https://www.github.com/kevingentile",
 		},
 		{Label: "Twitter",
 			Icon: "fa-twitter",

@@ -2,7 +2,7 @@
 #Get golang
 FROM golang:latest
 
-WORKDIR /go/src/github.com/laughingcabbage/kevingentile.com
+WORKDIR /go/src/github.com/kevingentile/kevingentile.com
 COPY . .
 
 RUN go-wrapper download
