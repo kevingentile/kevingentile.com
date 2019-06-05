@@ -7,7 +7,7 @@ import (
 
 	"github.com/gorilla/mux"
 
-	tracker "github.com/LaughingCabbage/fortnite-tracker/v1"
+	tracker "github.com/kevingentile/fortnite-tracker/v1"
 )
 
 // Data holds response data to serve as json
