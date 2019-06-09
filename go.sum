@@ -1,6 +1,4 @@
-github.com/LaughingCabbage/tracker-bot v0.0.0-20180511013755-47ce9eb9f4fa h1:wSv4c/j8OkqdihbRwgfUZ/y44TSOl5zJJiK6f+rFBPk=
-github.com/LaughingCabbage/tracker-bot v0.0.0-20180511013755-47ce9eb9f4fa/go.mod h1:c05HAo3l48/4aiF5uAS9BBlQUoDOkRXvAONza9h7FUQ=
-github.com/gorilla/mux v0.0.0-20190217153849-8559a4f775fc h1:dk82g3GkPO87ORKQr5Z+XILG+mG74cgUbmPnMdNPOdQ=
-github.com/gorilla/mux v0.0.0-20190217153849-8559a4f775fc/go.mod h1:1lud6UwP+6orDFRuTfBEV8e9/aOM/c4fVVCaMa2zaAs=
-github.com/kevingentile/fortnite-tracker v0.0.0-20190223070654-829ee36e5614 h1:AzTK5O1+SG3Gu4kyFZoR2QFVwlRHT0R+lylBssWkQxk=
-github.com/kevingentile/fortnite-tracker v0.0.0-20190223070654-829ee36e5614/go.mod h1:oNZ0LyFyoRRLY9enr0PpQ/YTP56zMKfR0gXu94IM5Mw=
+github.com/gorilla/mux v1.7.2 h1:zoNxOV7WjqXptQOVngLmcSQgXmgk4NMz1HibBchjl/I=
+github.com/gorilla/mux v1.7.2/go.mod h1:1lud6UwP+6orDFRuTfBEV8e9/aOM/c4fVVCaMa2zaAs=
+github.com/kevingentile/fortnite-tracker v1.0.0 h1:QE93khOMSckMyKjpgz9H/6xfe8g1NV6OEa0wqrjo+yc=
+github.com/kevingentile/fortnite-tracker v1.0.0/go.mod h1:MhkXmTUVuQDZnlZNanlz7tYlguZAOwhe9Vwkn1IwJrE=
