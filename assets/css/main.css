@@ -2096,14 +2096,14 @@
 
 	#header {
 		position: relative;
-		background-image: url("../../images/header.jpg");
-		background-size: cover;
-		background-position: center center;
-		background-attachment: fixed;
-		color: #fff;
+		/* background-image: url("../../images/header.jpg"); */
+		/* background-size: cover; */
+		/* background-position: center center; */
+		/* background-attachment: fixed; */
+		/* color: #fff; */
 		text-align: center;
-		padding: 7.5em 0 2em 0;
-		cursor: default;
+		/* padding: 7.5em 0 2em 0; */
+		/* cursor: default; */
 	}
 
 		#header:before {
