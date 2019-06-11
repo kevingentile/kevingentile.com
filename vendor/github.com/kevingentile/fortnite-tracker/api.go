@@ -1,9 +1,11 @@
-// Copyright 2018 Kevin Gentile.
+// Copyright 2019 Kevin Gentile.
 // Licensed under GNU General Public License v3.0
+
 package tracker
 
 import (
 	"encoding/json"
+	"errors"
 	"io/ioutil"
 	"log"
 	"math"
@@ -12,8 +14,8 @@ import (
 )
 
 // GetProfile is used to request a profile from fortnite tracker
-func GetProfile(platform, name, APIToken string) (Profile, error) {
-	profile := Profile{}
+func GetProfile(platform, name, APIToken string) (*Profile, error) {
+	profile := &Profile{}
 	client := &http.Client{}
 	req, err := http.NewRequest("GET", ProfileRoute+platform+"/"+name, nil)
 	if err != nil {
@@ -33,16 +35,25 @@ func GetProfile(platform, name, APIToken string) (Profile, error) {
 		log.Println("failed to read response body")
 	}
 
-	err = json.Unmarshal(body, &profile)
+	err = json.Unmarshal(body, profile)
 	if err != nil {
 		log.Println("failed to unmarshal profile json")
 		return profile, err
 	}
+
+	if profile.AccountID == "" {
+		apiErr := Error{}
+		if err := json.Unmarshal(body, &apiErr); err != nil {
+			return nil, errors.New("error in profile request. API may be down")
+		}
+		return nil, errors.New("error in profile request: \"" + apiErr.Error + "\"")
+	}
+
 	return profile, nil
 }
 
 // GetWins returns a profile lifetime wins
-func GetWins(profile Profile) (int, error) {
+func (profile *Profile) GetWins() (int, error) {
 	winsString, err := lookupLifetimeStat(profile, "Wins")
 	if err != nil {
 		return -1, err
@@ -57,7 +68,7 @@ func GetWins(profile Profile) (int, error) {
 }
 
 // GetTop3s returns a profile lifetime top 3 placements
-func GetTop3s(profile Profile) (int, error) {
+func (profile *Profile) GetTop3s() (int, error) {
 	top3String, err := lookupLifetimeStat(profile, "Top 3s")
 	if err != nil {
 		return -1, err
@@ -72,7 +83,7 @@ func GetTop3s(profile Profile) (int, error) {
 }
 
 // GetKills returns a profile lifetime kills
-func GetKills(profile Profile) (int, error) {
+func (profile *Profile) GetKills() (int, error) {
 	killsString, err := lookupLifetimeStat(profile, "Kills")
 	if err != nil {
 		return -1, err
@@ -87,7 +98,7 @@ func GetKills(profile Profile) (int, error) {
 }
 
 // GetKDR returns a profile lifetime kill death ratio
-func GetKDR(profile Profile) (float64, error) {
+func (profile *Profile) GetKDR() (float64, error) {
 	kdrString, err := lookupLifetimeStat(profile, "K/d")
 	if err != nil {
 		return -1, err
@@ -100,7 +111,7 @@ func GetKDR(profile Profile) (float64, error) {
 	return kdr, nil
 }
 
-func lookupLifetimeStat(profile Profile, key string) (string, error) {
+func lookupLifetimeStat(profile *Profile, key string) (string, error) {
 	for _, item := range profile.LifeTimeStats {
 		if item.Key == key {
 			return item.Value, nil
@@ -110,7 +121,7 @@ func lookupLifetimeStat(profile Profile, key string) (string, error) {
 }
 
 // GetCurrentKDR returns the kdr for the current season
-func GetCurrentKDR(profile Profile) (float64, error) {
+func (profile *Profile) GetCurrentKDR() (float64, error) {
 	stats := profile.Stats
 
 	totalKills := stats.CurrP10.Kills.ValueInt +

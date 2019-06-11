@@ -2,12 +2,13 @@ package main
 
 import (
 	"encoding/json"
+	"log"
 	"net/http"
 	"os"
 
 	"github.com/gorilla/mux"
 
-	tracker "github.com/kevingentile/fortnite-tracker/v1"
+	tracker "github.com/kevingentile/fortnite-tracker"
 )
 
 // Data holds response data to serve as json
@@ -27,21 +28,21 @@ func handleFortniteData(w http.ResponseWriter, r *http.Request) {
 	}
 	data := Data{}
 
-	kills, err := tracker.GetKills(profile)
+	kills, err := profile.GetKills()
 	if err != nil {
 		handleError(err, w)
 		return
 	}
 	data.Kills = kills
 
-	wins, err := tracker.GetWins(profile)
+	wins, err := profile.GetWins()
 	if err != nil {
 		handleError(err, w)
 		return
 	}
 	data.Wins = wins
 
-	kdr, err := tracker.GetCurrentKDR(profile)
+	kdr, err := profile.GetCurrentKDR()
 	if err != nil {
 		handleError(err, w)
 		return
@@ -58,6 +59,7 @@ func handleFortniteData(w http.ResponseWriter, r *http.Request) {
 
 func handleError(err error, w http.ResponseWriter) {
 	if err != nil {
+		log.Println("Error proxying fornite stat request: ", err)
 		data := Data{
 			Wins:  -1,
 			KDR:   -1,

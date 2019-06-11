@@ -1,5 +1,6 @@
-// Copyright 2018 Kevin Gentile.
+// Copyright 2019 Kevin Gentile.
 // Licensed under GNU General Public License v3.0
+
 package tracker
 
 // StatField is an abstract JSON object for a stats field
@@ -101,4 +102,10 @@ type Match struct {
 	Platform        int     `json:"platform"`
 	TRNRating       float64 `json:"trnRating"`
 	TRNRatingChange float64 `json:"trnRatingChange"`
+}
+
+// Error is a server api response error
+type Error struct {
+	Error string `json:"error"`
+	Code  string `json:"code"`
 }
