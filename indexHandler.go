@@ -15,30 +15,45 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 
 	banner := web.PageHeading{
 		Header: "Welcome to my portfolio!",
-		Body:   "Here lies the fruits of my labor...",
 	}
 
 	carousel := web.Carousel{
 		Articles: []web.ReelArticle{
-			{Title: "kevingentile.com",
+			{
+				Title:     "kevingentile.com",
 				Body:      "This website! Built using Go and the HTML5UP site template.",
 				ImageLink: "https://github.com/kevingentile/kevingentile.com",
 				PicPath:   "../images/pic01.jpg",
 			},
-			{Title: "goLinks",
-				Body:      "A blockchain library and data integrity tool built in Go",
-				ImageLink: "https://github.com/kevingentile/goLinks",
+			{
+				Title:     "GoLinks",
+				Body:      "A blockchain library and filesystem integrity tool built in Go",
+				ImageLink: "https://github.com/govice/golinks",
 				PicPath:   "../images/pic04.jpg",
 			},
-			{Title: "isoChar",
-				Body:      "Image processing to for text tracing.",
-				ImageLink: "https://github.com/kevingentile/isoChar",
-				PicPath:   "../images/pic02.jpg",
+			{
+				Title:     "Golinks Daemon",
+				Body:      "Prototype for maintaining an internal P2P blockchain with Golinks",
+				ImageLink: "https://github.com/govice/golinks-daemon",
+				PicPath:   "../images/pic04.jpg",
 			},
-			{Title: "Arcade Game",
-				Body:      "A game built with the SFML framework in C++",
-				ImageLink: "https://github.com/kevingentile/Asteroid",
-				PicPath:   "../images/pic03.jpg",
+			{
+				Title:     "Fortnite Tracker API Driver",
+				Body:      "Go driver for the Fortnite Tracker API",
+				ImageLink: "https://github.com/kevingentile/fortnite-tracker",
+				PicPath:   "../images/pic01.jpg",
+			},
+			{
+				Title:     "Fornite Statistics Widget for Open Broadcast Studio ",
+				Body:      "Module for displaying statistics for use in live broadcasts",
+				ImageLink: "http://www.kevingentile.com/fortnite.html",
+				PicPath:   "../images/pic01.jpg",
+			},
+			{
+				Title:     "govice.org",
+				Body:      "Landing page for the Govice organization",
+				ImageLink: "https://github.com/govice/govice.org",
+				PicPath:   "../images/pic04.jpg",
 			},
 		},
 	}
