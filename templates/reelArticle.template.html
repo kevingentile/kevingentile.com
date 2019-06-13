@@ -1,10 +1,16 @@
-{{ define "reelArticle" }}
-<article>
+<!-- <article>
     <a href="{{.ImageLink}}" class="image featured"><img src="{{.PicPath}}" alt="" /></a>
     <header>
         <h3><a href="{{.ImageLink}}">{{.Title}}</a></h3>
     </header>
     <p>{{.Body}}</p>
     <p></p>
-</article>
-{{ end }}
+</article> -->
+
+<div class="carousel-item {{ if .Active }} active {{ end }}">
+    <a href="{{.ImageLink}}"> <img src="{{.PicPath}}" class="d-block w-100" alt="..."></a>
+    <div class="carousel-caption d-none d-md-block">
+        <h5>{{.Title}}</h5>
+        <p>{{.Body}}</p>
+    </div>
+</div>

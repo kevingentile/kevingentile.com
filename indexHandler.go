@@ -30,6 +30,7 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 				Body:      "A blockchain library and filesystem integrity tool built in Go",
 				ImageLink: "https://github.com/govice/golinks",
 				PicPath:   "../images/pic04.jpg",
+				Active:    true,
 			},
 			{
 				Title:     "Golinks Daemon",

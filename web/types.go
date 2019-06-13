@@ -19,6 +19,7 @@ type ReelArticle struct {
 	Body      string
 	ImageLink string
 	PicPath   string
+	Active    bool
 }
 
 type ContactBar struct {

@@ -15,10 +15,10 @@
 	<body class="{{.Class}}">
 	{{ end }}
 	<div id="page-wrapper">
-		{{ template "header" . }}
-		{{ template "main" . }}
-		{{ template "footer" . }}
+		{{ template "header.template.html" . }}
+		{{ template "main.template.html" . }}
+		{{ template "footer.template.html" . }}
 	</div>
-	{{ template "scripts" . }}
+	{{ template "scripts.template.html" . }}
 	</body>
 </html>

@@ -1,25 +1,30 @@
 <!DOCTYPE HTML>
 
 <html>
-	{{ with .page}}
 	<head>
+		{{ with .page}}
 		<title>{{.Title}}</title>
+		{{ end }}
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!--[if lte IE 8]>
-		<script src="../assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="../assets/css/main.css" />
-		<!--[if lte IE 8]>
-		<link rel="stylesheet" href="../assets/css/ie8.css"/><![endif]-->
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-90462748-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+		gtag('config', 'UA-90462748-1');
+	</script>
 	</head>
-	<body class="{{.Class}}">
-	{{ end }}
-		<div id="page-wrapper">
-			{{ template "header" . }}
-			{{ template "banner" . }}
-			{{ template "carousel" . }}
-			{{ template "footer" . }}
-		</div>
-		{{ template "scripts" . }}
+	<body class="container">
+		{{ template "nav.template.html" . }}
+		{{ template "banner.template.html" . }}
+		{{ template "carousel.template.html" . }}
+		{{ template "footer.template.html" . }}
+		{{ template "scripts.template.html" . }}
 	</body>
 </html>
