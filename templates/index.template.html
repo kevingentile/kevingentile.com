@@ -1,25 +1,20 @@
 <!DOCTYPE HTML>
 
-<html>
-	{{ with .page}}
-	<head>
-		<title>{{.Title}}</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!--[if lte IE 8]>
-		<script src="../assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="../assets/css/main.css" />
-		<!--[if lte IE 8]>
-		<link rel="stylesheet" href="../assets/css/ie8.css"/><![endif]-->
-	</head>
-	<body class="{{.Class}}">
-	{{ end }}
-		<div id="page-wrapper">
-			{{ template "header" . }}
-			{{ template "banner" . }}
-			{{ template "carousel" . }}
-			{{ template "footer" . }}
+<html lang="en">
+	{{ template "header.template.html" . }}
+
+	<body class="bg-dark">
+		{{ template "nav.template.html" . }}
+		<div class="container-md justify-content-center">
+			<div class="row justify-content-center">
+				<div class="mb-5 LI-profile-badge"  data-version="v1" data-size="large" data-locale="en_US" data-type="horizontal" data-theme="dark" data-vanity="gentilekevin"><a class="LI-simple-link" href='https://www.linkedin.com/in/gentilekevin?trk=profile-badge'>Kevin Gentile</a></div>
+			</div>
+			<p class="row text-center text-white lead">My name is Kevin Gentile and this is my personal website. I am a software engineer located in Columbus, Ohio. I specialize in
+				microservices and infrastructure automation around the cloud.
+			</p>
 		</div>
-		{{ template "scripts" . }}
+		{{ template "copyright.template.html" . }}
+		{{ template "scripts.template.html" . }}
+		<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
 	</body>
 </html>
