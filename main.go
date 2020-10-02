@@ -27,6 +27,20 @@ func main() {
 		c.HTML(http.StatusOK, "index.template.html", nil)
 	})
 
+	engine.GET("/rambler", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "articles.template.html", gin.H{
+			"articles": []gin.H{{
+				"title": "Article Title",
+				"date":  time.Now().UTC(),
+				"short": "this article is a test rambler article with a description to fill the container",
+			}, {
+				"title": "Article Title",
+				"date":  time.Now().UTC(),
+				"short": "this article is a test rambler article with a description to fill the container",
+			}},
+		})
+	})
+
 	rl, err := NewRateLimiter(time.Second * viper.GetDuration("limiter_duration"))
 	if err != nil {
 		log.Fatal(err)
