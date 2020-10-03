@@ -13,8 +13,7 @@
                 {{ range .articles }}
                 <li class="ard bg-dark list-group-item border border-light">
                     <div class="card-header">{{ .Title }}</div>
-                    <!-- <div class="card-body">{{ .short }}</div> -->
-                    <!-- <div class="card-footer">{{ .date }}</div> -->
+                    <div class="card-footer text-muted">{{ .Date }}</div>
                 </li>
                 {{ end }}
             </ul>

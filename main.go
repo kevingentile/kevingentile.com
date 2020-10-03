@@ -2,14 +2,10 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
 	"path"
-	"sort"
-	"strconv"
-	"strings"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -31,30 +27,11 @@ func main() {
 		c.HTML(http.StatusOK, "index.template.html", nil)
 	})
 
-	engine.GET("/rambler", func(c *gin.Context) {
-		articlesDir, err := ioutil.ReadDir(viper.GetString("rambler_articles"))
-		if err != nil {
-			c.AbortWithError(http.StatusInternalServerError, err)
-		}
-
-		//TODO load articles at process start
-		var articles []Article
-		for _, article := range articlesDir {
-			nameExtension := strings.Split(article.Name(), ".")
-			nameIndex := strings.Split(nameExtension[0], "_")
-			index, err := strconv.Atoi(nameIndex[1])
-			if err != nil {
-				c.AbortWithError(http.StatusInternalServerError, err)
-				return
-			}
-			articles = append(articles, Article{Title: nameIndex[0], Index: index})
-		}
-
-		sort.Slice(articles, func(i, j int) bool { return articles[i].Index < articles[j].Index })
-		c.HTML(http.StatusOK, "articles.template.html", gin.H{
-			"articles": articles,
-		})
-	})
+	articleHandler, err := NewArticleHandler()
+	if err != nil {
+		log.Fatal(err)
+	}
+	engine.GET("/rambler", articleHandler.Handler)
 	rl, err := NewRateLimiter(time.Second * viper.GetDuration("limiter_duration"))
 	if err != nil {
 		log.Fatal(err)
@@ -112,7 +89,7 @@ func initConfig() error {
 
 	viper.SetDefault("port", 8080)
 	viper.SetDefault("limiter_duration", 3)
-	viper.SetDefault("rambler_articles", "markdown/")
+	viper.SetDefault("rambler_articles", "articles/")
 
 	if err := viper.ReadInConfig(); err != nil {
 		log.Println(err)
