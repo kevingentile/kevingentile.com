@@ -55,6 +55,10 @@ func main() {
 	engine.Static("/assets", "assets")
 	engine.Static("/images", "images")
 
+	engine.NoRoute(func(c *gin.Context) {
+		c.Redirect(http.StatusSeeOther, "/")
+	})
+
 	log.Fatal(engine.Run(":" + viper.GetString("port")))
 
 }
