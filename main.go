@@ -19,7 +19,11 @@ func main() {
 		log.Fatal(err)
 	}
 
-	log.Println("Start PORT:", viper.GetInt("port"))
+	port, ok := os.LookupEnv("PORT")
+	if !ok {
+		port = viper.GetString("port")
+	}
+	log.Println("Start PORT:", port)
 	engine := gin.Default()
 	engine.LoadHTMLGlob("templates/*")
 
@@ -59,7 +63,7 @@ func main() {
 		c.Redirect(http.StatusSeeOther, "/")
 	})
 
-	log.Fatal(engine.Run(":" + viper.GetString("port")))
+	log.Fatal(engine.Run(":" + port))
 
 }
 
