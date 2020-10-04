@@ -7,16 +7,20 @@
 	<body class="bg-dark">
         {{ template "nav.template.html" . }}
         
-		<div class="container-sm justify-content-center text-white">
-            <h1>Rambler Articles</h1>
-            <ul class="list-group list-group-flush border rounded-sm border-white">
-                {{ range .articles }}
-                <li class="ard bg-dark list-group-item border-bottom">
-                    <a class="btn btn-secondary btn-block" href="/rambler/{{ .Date }}">{{ .Title }}</a>
-                    <div class="card-footer text-muted">Posted: {{ .Date }}</div>
-                </li>
-                {{ end }}
-            </ul>
+		<div class="container justify-content-center text-white">
+            <div class="row justify-content-center">
+                <div class="col-md-5">
+                    <h1>Rambler Articles</h1>
+                    <ul class="list-group list-group-flush border rounded-sm border-white">
+                        {{ range .articles }}
+                        <li class="card bg-dark list-group-item border-bottom">
+                            <a class="btn btn-secondary btn-block" href="/rambler/{{ .Date }}">{{ .Title }}</a>
+                            <div class="card-footer text-muted">Posted: {{ .Date }}</div>
+                        </li>
+                        {{ end }}
+                    </ul>
+                </div>
+            </div>
 		</div>
 		{{ template "copyright.template.html" . }}
 		{{ template "scripts.template.html" . }}
