@@ -6,13 +6,28 @@
 
 	<body class="bg-dark">
 		{{ template "nav.template.html" . }}
-		<div class="container-md justify-content-center">
+		<div class="container">
 			<div class="row justify-content-center">
-				<div class="mb-5 LI-profile-badge"  data-version="v1" data-size="large" data-locale="en_US" data-type="horizontal" data-theme="dark" data-vanity="gentilekevin"><a class="LI-simple-link" href='https://www.linkedin.com/in/gentilekevin?trk=profile-badge'>Kevin Gentile</a></div>
+				<div class="col-md-5">
+					<div class="col-md-5 LI-profile-badge mb-5" data-version="v1" data-size="large" data-locale="en_US" data-type="horizontal" data-theme="dark" data-vanity="gentilekevin"><a class="LI-simple-link" href='https://www.linkedin.com/in/gentilekevin?trk=profile-badge'>Kevin Gentile</a></div>
+				</div>
 			</div>
-			<p class="row text-center text-white lead">My name is Kevin Gentile and this is my personal website. I am a software engineer located in Columbus, Ohio. I specialize in
-				microservices and infrastructure automation around the cloud.
-			</p>
+			<div class="row justify-content-center">
+				<div class="col-md-5 text-white lead">
+					<div class="row">
+						<p>
+							My name is Kevin Gentile. I am a software engineer located in Columbus, Ohio. I specialize in
+							microservices and infrastructure automation around the cloud.
+						</p>
+					</div>
+					<div class="row">
+						<p>
+							This website has recently taken on a simplified style. Read about its history <a href="/rambler/">here</a>.
+							Check out the source code for this site on <a href="https://github.com/kevingentile/kevingentile.com">GitHub</a>.
+						</p>
+					</div>
+				</div>
+			</div>
 		</div>
 		{{ template "copyright.template.html" . }}
 		{{ template "scripts.template.html" . }}
