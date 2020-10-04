@@ -31,7 +31,9 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	engine.GET("/rambler", articleHandler.Handler)
+	engine.GET("/rambler", articleHandler.ListHandler)
+	engine.GET("/rambler/:article_date", articleHandler.Handler)
+
 	rl, err := NewRateLimiter(time.Second * viper.GetDuration("limiter_duration"))
 	if err != nil {
 		log.Fatal(err)

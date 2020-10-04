@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+    <title>Kevin Gentile - Rambler</title>
+	{{ template "header.template.html" . }}
+
+	<body class="bg-dark">
+        {{ template "nav.template.html" . }}
+        
+		<div class="container-md justify-content-center text-white">
+            <ul class="list-group list-group-flush border border-white">
+                <li class="card bg-dark list-group-item border border-light">
+                    <div class="card-header shadow-md">{{ .Title }}</div>
+                    <div class="container shadow-md">
+                    {{ .Body }}
+                    </div>
+                    <div class="card-footer text-muted shadow-md">{{ .Date }}</div>
+                </li>
+            </ul>
+		</div>
+		{{ template "copyright.template.html" . }}
+		{{ template "scripts.template.html" . }}
+	</body>
+</html>
