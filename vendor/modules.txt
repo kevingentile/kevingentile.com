@@ -1,4 +1,0 @@
-# github.com/gorilla/mux v1.7.2
-github.com/gorilla/mux
-# github.com/kevingentile/fortnite-tracker v1.0.0
-github.com/kevingentile/fortnite-tracker

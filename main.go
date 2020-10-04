@@ -1,50 +1,105 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 	"os"
+	"path"
 	"time"
 
-	"github.com/gorilla/mux"
+	"github.com/gin-gonic/gin"
+	"github.com/spf13/viper"
 )
 
 var limiter <-chan time.Time
 
 func main() {
-	log.Println("keivngentile.com Web Start PORT: " + os.Getenv("PORT"))
-	router := mux.NewRouter() // Create gorilla router
+	if err := initConfig(); err != nil {
+		log.Fatal(err)
+	}
 
-	limiter = time.Tick(time.Second * 3)
+	log.Println("Start PORT:", viper.GetInt("port"))
+	engine := gin.Default()
+	engine.LoadHTMLGlob("templates/*")
 
-	// "http://kevingentile.com/index.html"
-	router.HandleFunc("/", makeHandler(IndexHandler))
-	router.HandleFunc("/index.html", makeHandler(IndexHandler))
-
-	// "http://kevingentile.com/contact.html"
-	router.HandleFunc("/contact.html", makeHandler(ContactHandler))
-
-	// "http://kevingentile.com/links.html"
-	router.HandleFunc("/links.html", makeHandler(LinksHandler))
-
-	// "http://kevingentile.com/obs/kevingentile" JSON // TODO rate limit this handler
-	router.HandleFunc("/obs/{platform}/{username}", rateLimit(handleFortniteData, &limiter))
-	router.HandleFunc("/fortnite.html", func(w http.ResponseWriter, r *http.Request) {
-		http.ServeFile(w, r, "pages/fortnite.html")
+	engine.GET("/", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "index.template.html", nil)
 	})
+
+	articleHandler, err := NewArticleHandler()
+	if err != nil {
+		log.Fatal(err)
+	}
+	engine.GET("/rambler", articleHandler.ListHandler)
+	engine.GET("/rambler/:article_date", articleHandler.Handler)
+
+	rl, err := NewRateLimiter(time.Second * viper.GetDuration("limiter_duration"))
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	obsLimited := engine.Group("/obs").Use(rl.RateLimit())
+	{
+		obsLimited.GET("/:platform/:username", handleFortniteData)
+	}
+
+	engine.StaticFile("/fortnite", "pages/fortnite.html")
 
 	// Serve this file for any /fornite route
-	router.HandleFunc("/fortnite/{platform}/{username}", func(w http.ResponseWriter, r *http.Request) {
-		http.ServeFile(w, r, "assets/obs/fortnite.html")
+	engine.GET("/fortnite/:platform/:username", func(c *gin.Context) {
+		c.Status(http.StatusOK)
+		c.File("assets/obs/fortnite.html")
 	})
 
-	// "http://kevingentile.com/assets/*"
-	router.PathPrefix("/assets/").Handler(http.StripPrefix("/assets/", http.FileServer(http.Dir("assets"))))
+	engine.Static("/assets", "assets")
+	engine.Static("/images", "images")
 
-	// "http://kevingentile.com/images/*"
-	router.PathPrefix("/images/").Handler(http.StripPrefix("/images/", http.FileServer(http.Dir("images"))))
+	engine.NoRoute(func(c *gin.Context) {
+		c.Redirect(http.StatusSeeOther, "/")
+	})
 
-	log.Println(templates.DefinedTemplates())
-	log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), router)) // Listen on port defined by environment variable PORT
+	log.Fatal(engine.Run(":" + viper.GetString("port")))
 
+}
+
+func initConfig() error {
+	home, err := os.UserHomeDir()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// validate website home directory exists, if not create it
+	webDir := path.Join(home, ".kevingentile.com")
+	if _, err := os.Stat(webDir); os.IsNotExist(err) {
+		fmt.Println("creating", webDir)
+		if err := os.Mkdir(webDir, os.ModePerm); err != nil {
+			return err
+		}
+	}
+
+	// validate config file exists, if not create it
+	configPath := path.Join(webDir, "config.json")
+	if _, err := os.Stat(configPath); os.IsNotExist(err) {
+		fmt.Println("creating", configPath)
+		if _, err := os.Create(configPath); err != nil {
+			return err
+		}
+	}
+
+	viper.SetConfigName("config")
+	viper.SetConfigType("json")
+	viper.SetEnvPrefix("KG")
+	viper.AutomaticEnv()
+	viper.AddConfigPath(webDir)
+
+	viper.SetDefault("port", 8080)
+	viper.SetDefault("limiter_duration", 3)
+	viper.SetDefault("rambler_articles", "articles/")
+
+	if err := viper.ReadInConfig(); err != nil {
+		log.Println(err)
+	}
+
+	return nil
 }

@@ -5,10 +5,6 @@ FROM golang:latest
 WORKDIR /go/src/github.com/kevingentile/kevingentile.com
 COPY . .
 
-RUN go-wrapper download
+RUN go install
 
-RUN go-wrapper install
-
-CMD ["go-wrapper", "run"]
-
-EXPOSE $PORT
+CMD ["kevingentile.com"]

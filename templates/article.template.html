@@ -1,12 +1,20 @@
-{{ define "article" }}
-<section>
-    <header>
-        <h3>{{.Heading}}</h3>
-    </header>
-        {{ range .Paragraphs }}
-        <p>
-            {{.}}
-        </p>
-        {{ end }}
-</section>
-{{ end }}
+<!DOCTYPE HTML>
+
+<html lang="en">
+    <title>Kevin Gentile - Rambler</title>
+	{{ template "header.template.html" . }}
+
+	<body class="bg-dark">
+        {{ template "nav.template.html" . }}
+        <div class="container"></div>
+            <div class="row justify-content-center">
+                <div class="col-md-5 shadow shadow-lg text-white border rounded-sm border-white">
+                    {{ .Body }}
+                    <div class="card-footer text-muted shadow-md mt-5">{{ .Date }}</div>
+                </div>
+            </div>
+        </div>
+		{{ template "copyright.template.html" . }}
+		{{ template "scripts.template.html" . }}
+	</body>
+</html>
