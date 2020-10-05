@@ -1,8 +1,6 @@
 package main
 
 import (
-	"fmt"
-	"log"
 	"net/http"
 	"os"
 	"path"
@@ -16,15 +14,17 @@ var limiter <-chan time.Time
 
 func main() {
 	if err := initConfig(); err != nil {
-		log.Fatal(err)
+		Fatal(err)
 	}
 
 	port, ok := os.LookupEnv("PORT")
 	if !ok {
 		port = viper.GetString("port")
 	}
-	log.Println("Start PORT:", port)
+	Debug("Start PORT:", port)
 	engine := gin.Default()
+
+	engine.Use(UpgradeHTTPSMiddleware())
 	engine.LoadHTMLGlob("templates/*")
 
 	engine.GET("/", func(c *gin.Context) {
@@ -33,14 +33,14 @@ func main() {
 
 	articleHandler, err := NewArticleHandler()
 	if err != nil {
-		log.Fatal(err)
+		Fatal(err)
 	}
 	engine.GET("/rambler", articleHandler.ListHandler)
 	engine.GET("/rambler/:article_date", articleHandler.Handler)
 
 	rl, err := NewRateLimiter(time.Second * viper.GetDuration("limiter_duration"))
 	if err != nil {
-		log.Fatal(err)
+		Fatal(err)
 	}
 
 	obsLimited := engine.Group("/obs").Use(rl.RateLimit())
@@ -63,20 +63,19 @@ func main() {
 		c.Redirect(http.StatusSeeOther, "/")
 	})
 
-	log.Fatal(engine.Run(":" + port))
-
+	Fatal(engine.Run(":" + port))
 }
 
 func initConfig() error {
 	home, err := os.UserHomeDir()
 	if err != nil {
-		log.Fatal(err)
+		Fatal(err)
 	}
 
 	// validate website home directory exists, if not create it
 	webDir := path.Join(home, ".kevingentile.com")
 	if _, err := os.Stat(webDir); os.IsNotExist(err) {
-		fmt.Println("creating", webDir)
+		Print("creating", webDir)
 		if err := os.Mkdir(webDir, os.ModePerm); err != nil {
 			return err
 		}
@@ -85,7 +84,7 @@ func initConfig() error {
 	// validate config file exists, if not create it
 	configPath := path.Join(webDir, "config.json")
 	if _, err := os.Stat(configPath); os.IsNotExist(err) {
-		fmt.Println("creating", configPath)
+		Print("creating", configPath)
 		if _, err := os.Create(configPath); err != nil {
 			return err
 		}
@@ -102,7 +101,7 @@ func initConfig() error {
 	viper.SetDefault("rambler_articles", "articles/")
 
 	if err := viper.ReadInConfig(); err != nil {
-		log.Println(err)
+		Error(err)
 	}
 
 	return nil
