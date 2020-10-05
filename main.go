@@ -25,6 +25,8 @@ func main() {
 	}
 	log.Println("Start PORT:", port)
 	engine := gin.Default()
+
+	engine.Use(UpgradeHTTPS())
 	engine.LoadHTMLGlob("templates/*")
 
 	engine.GET("/", func(c *gin.Context) {
