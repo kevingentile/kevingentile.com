@@ -11,7 +11,7 @@ import (
 func UpgradeHTTPS() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		scheme := c.Request.URL.Scheme
-		if scheme == "http" || (!viper.GetBool("development") && scheme == "") {
+		if scheme == "http" || (scheme == "" && !viper.GetBool("development")) {
 			targetURL := url.URL{
 				Scheme: "https", Host: c.Request.Host, Path: c.Request.URL.Path, RawQuery: c.Request.URL.RawQuery,
 			}
