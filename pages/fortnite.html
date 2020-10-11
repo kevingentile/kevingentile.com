@@ -18,49 +18,51 @@
 </head>
 
 <body>
-    <div class="container mt-5 justify-content-center align-items-center">
-        <img class="justify-content-center" src="/assets/obs/preview.jpg">
-        <h2>Fortnite OBS Widget</h2>
+    <div class="container">
+        <div class="col mt-5 m-1 justify-content-center">
+            <img class="justify-content-center" src="/assets/obs/preview.jpg">
+            <h2>Fortnite OBS Widget</h2>
 
-        <p>
-            This widget pulls total wins, total kills, and your current season KDR from fortnite tracker. It will
-            update periodically.
-        </p>
-        <p>Enter your username and platform. You will be redirected to the widget for your account and platform. Use
-            the link as a browser
-            source in OBS.
-        </p>
+            <p>
+                This widget pulls total wins, total kills, and your current season KDR from fortnite tracker. It will
+                update periodically.
+            </p>
+            <p>Enter your username and platform. You will be redirected to the widget for your account and platform. Use
+                the link as a browser
+                source in OBS.
+            </p>
 
 
 
-        <div class="jumbotron my-auto">
+            <div class="jumbotron my-auto">
 
-            <div class="row">
-                <div class="col-sm">
-                    <form>
-                        <div class="form-group">
-                            <label for="username">Epic Username</label>
-                            <input type="text" class="form-control" id="username" placeholder="username">
-                        </div>
-                        <div class="form-group">
-                            <label for="platform">Platform</label>
-                            <select class="form-control" id="platform">
-                                <option>pc</option>
-                                <option>psn</option>
-                                <option>xbl</option>
-                            </select>
-                        </div>
-                        <a class="btn btn-primary btn-block" href="javascript: submit()">Submit</a>
-                    </form>
+                <div class="row">
+                    <div class="col-sm">
+                        <form>
+                            <div class="form-group">
+                                <label for="username">Epic Username</label>
+                                <input type="text" class="form-control" id="username" placeholder="username">
+                            </div>
+                            <div class="form-group">
+                                <label for="platform">Platform</label>
+                                <select class="form-control" id="platform">
+                                    <option>pc</option>
+                                    <option>psn</option>
+                                    <option>xbl</option>
+                                </select>
+                            </div>
+                            <a class="btn btn-primary btn-block" href="javascript: submit()">Submit</a>
+                        </form>
 
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <p class="mt-3">Contact: <a href="mailto:admin@kevingentile.com">admin@kevingentile.com</a>
-        </p>
-        <a href="https://streamlabs.com/laughingcabbage_" class="badge badge-primary">Donate</a>
-        <a href="/" class="badge badge-dark">Home</a>
+            <p class="mt-3">Contact: <a href="mailto:admin@kevingentile.com">admin@kevingentile.com</a>
+            </p>
+            <a href="https://streamlabs.com/laughingcabbage_" class="badge badge-primary">Donate</a>
+            <a href="/" class="badge badge-dark">Home</a>
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
