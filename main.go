@@ -6,6 +6,7 @@ import (
 	"path"
 	"time"
 
+	"github.com/gin-contrib/gzip"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
 )
@@ -25,8 +26,12 @@ func main() {
 	engine := gin.Default()
 
 	engine.Use(UpgradeHTTPSMiddleware())
+	engine.Use(gzip.Gzip(gzip.DefaultCompression))
 	engine.LoadHTMLGlob("templates/*")
 
+	engine.GET("/ping", func(c *gin.Context) {
+		c.String(http.StatusOK, "pong")
+	})
 	engine.GET("/", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "index.template.html", nil)
 	})
