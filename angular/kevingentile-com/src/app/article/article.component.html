@@ -1,0 +1,7 @@
+<div *ngIf="article | async as article"
+    class="col justify-content-center shadow shadow-lg text-white border rounded-sm border-white">
+    <div class="row m-2">
+        <div [innerHTML]="article.body"></div>
+        <div class="card-footer text-muted shadow-md mt-5">{{ article.date }}</div>
+    </div>
+</div>

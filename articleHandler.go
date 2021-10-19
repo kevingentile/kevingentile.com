@@ -16,20 +16,28 @@ import (
 )
 
 type Article struct {
-	Title string
-	Index int
-	Date  string
-	Body  template.HTML
+	Title string        `json:"title"`
+	Index int           `json:"index"`
+	Date  string        `json:"date"`
+	Body  template.HTML `json:"body"`
+}
+
+type ArticleSummary struct {
+	Title string `json:"title"`
+	Index int    `json:"index"`
+	Date  string `json:"date"`
 }
 
 type ArticleHandler struct {
-	Articles []Article
+	Articles         []Article
+	ArticleSummaries []ArticleSummary
 }
 
 const dateFormat string = "Jan-02-2006"
 
 func NewArticleHandler() (*ArticleHandler, error) {
 	var articles []Article
+	var articleSummaries []ArticleSummary
 
 	articlesDir, err := ioutil.ReadDir(viper.GetString("rambler_articles"))
 	if err != nil {
@@ -62,12 +70,20 @@ func NewArticleHandler() (*ArticleHandler, error) {
 			Date:  date.Format(dateFormat),
 			Body:  articleTmpl,
 		})
+
+		articleSummaries = append(articleSummaries, ArticleSummary{
+			Title: nameIndexDate[0],
+			Index: index,
+			Date:  date.Format(dateFormat),
+		})
 	}
 
 	sort.Slice(articles, func(i, j int) bool { return articles[i].Index < articles[j].Index })
+	sort.Slice(articleSummaries, func(i, j int) bool { return articles[i].Index < articles[j].Index })
 
 	return &ArticleHandler{
-		Articles: articles,
+		Articles:         articles,
+		ArticleSummaries: articleSummaries,
 	}, nil
 }
 
@@ -87,4 +103,20 @@ func (ah *ArticleHandler) Handler(c *gin.Context) {
 	}
 
 	c.Redirect(http.StatusSeeOther, "/rambler")
+}
+
+func (ah *ArticleHandler) ApiListHandler(c *gin.Context) {
+	c.JSON(http.StatusOK, ah.ArticleSummaries)
+}
+
+func (ah *ArticleHandler) ApiArticleHandler(c *gin.Context) {
+	date := c.Param("article_date")
+	for _, article := range ah.Articles {
+		if article.Date == date {
+			c.JSON(http.StatusOK, article)
+			return
+		}
+	}
+
+	c.Status(http.StatusNotFound)
 }
