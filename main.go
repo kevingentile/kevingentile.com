@@ -55,6 +55,8 @@ func main() {
 		c.File("assets/obs/fortnite.html")
 	})
 
+	engine.Static("/fortnite/assets", "assets/obs")
+
 	articleHandler, err := NewArticleHandler()
 	if err != nil {
 		Fatal(err)
