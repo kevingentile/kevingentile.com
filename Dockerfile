@@ -10,11 +10,10 @@ FROM golang:alpine
 
 WORKDIR /go/src/github.com/kevingentile/kevingentile.com
 COPY . .
-COPY --from=angular /angular .
+COPY --from=angular /angular/kevingentile-com/dist ./angular/kevingentile-com/dist
 
 RUN go install
 
 ENV GIN_MODE release
-ENV KG_DEVELOPMENT true
 
 ENTRYPOINT [ "kevingentile.com" ]
