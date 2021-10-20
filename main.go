@@ -6,6 +6,7 @@ import (
 	"path"
 	"time"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-contrib/gzip"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
@@ -24,7 +25,7 @@ func main() {
 	}
 	Debug("Start PORT:", port)
 	engine := gin.Default()
-
+	engine.Use(cors.Default())
 	engine.Use(UpgradeHTTPSMiddleware())
 	engine.Use(gzip.Gzip(gzip.DefaultCompression))
 	engine.LoadHTMLGlob("templates/*")
@@ -33,15 +34,8 @@ func main() {
 		c.String(http.StatusOK, "pong")
 	})
 	engine.GET("/", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "index.template.html", nil)
+		c.Redirect(http.StatusSeeOther, "/home")
 	})
-
-	articleHandler, err := NewArticleHandler()
-	if err != nil {
-		Fatal(err)
-	}
-	engine.GET("/rambler", articleHandler.ListHandler)
-	engine.GET("/rambler/:article_date", articleHandler.Handler)
 
 	rl, err := NewRateLimiter(time.Second * viper.GetDuration("limiter_duration"))
 	if err != nil {
@@ -61,8 +55,18 @@ func main() {
 		c.File("assets/obs/fortnite.html")
 	})
 
-	engine.Static("/assets", "assets")
-	engine.Static("/images", "images")
+	articleHandler, err := NewArticleHandler()
+	if err != nil {
+		Fatal(err)
+	}
+
+	apiGroup := engine.Group("/api")
+	{
+		apiGroup.GET("/articles", articleHandler.ApiListHandler)
+		apiGroup.GET("/articles/:article_date", articleHandler.ApiArticleHandler)
+	}
+
+	engine.Static("/home", "angular/kevingentile-com/dist/kevingentile-com")
 
 	engine.NoRoute(func(c *gin.Context) {
 		c.Redirect(http.StatusSeeOther, "/")

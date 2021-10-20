@@ -1,0 +1,13 @@
+<div class="col justify-content-center text-white m-1">
+    <div class="row justify-content-center">
+        <div class="cd-flex flex-column">
+            <h1>Rambler Articles</h1>
+            <ul *ngIf="articles | async as articles" class="list-group list-group-flush border rounded-sm border-white">
+                <li *ngFor="let article of articles" class="card bg-dark list-group-item border-bottom">
+                    <a class="btn btn-secondary btn-block" routerLink="/rambler/{{ article.date }}">{{ article.title }}</a>
+                    <div class="card-footer text-muted">Posted: {{ article.date }}</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

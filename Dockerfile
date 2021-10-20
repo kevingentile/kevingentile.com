@@ -1,10 +1,20 @@
 
-#Get golang
-FROM golang:latest
+FROM node:lts-alpine as angular
+
+COPY angular/ /angular
+WORKDIR /angular/kevingentile-com
+RUN npm ci && \ 
+    ./node_modules/.bin/ng build --configuration=production --base-href /home/ --deploy-url /home/
+
+FROM golang:alpine
 
 WORKDIR /go/src/github.com/kevingentile/kevingentile.com
 COPY . .
+COPY --from=angular /angular .
 
 RUN go install
 
-CMD ["kevingentile.com"]
+ENV GIN_MODE release
+ENV KG_DEVELOPMENT true
+
+ENTRYPOINT [ "kevingentile.com" ]
