@@ -6,7 +6,6 @@ import (
 	"path"
 	"time"
 
-	"github.com/gin-contrib/cors"
 	"github.com/gin-contrib/gzip"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
@@ -25,10 +24,6 @@ func main() {
 	}
 	Debug("Start PORT:", port)
 	engine := gin.Default()
-	corsCfg := cors.DefaultConfig()
-	corsCfg.AllowAllOrigins = true
-	corsCfg.AllowWildcard = true
-	engine.Use(cors.New(corsCfg))
 	engine.Use(UpgradeHTTPSMiddleware())
 	engine.Use(gzip.Gzip(gzip.DefaultCompression))
 	engine.LoadHTMLGlob("templates/*")
@@ -65,7 +60,10 @@ func main() {
 		Fatal(err)
 	}
 
-	apiGroup := engine.Group("/api")
+	apiGroup := engine.Group("/api").Use(func(c *gin.Context) {
+		c.Header("Access-Control-Allow-Origin", "*")
+		c.Next()
+	})
 	{
 		apiGroup.GET("/articles", articleHandler.ApiListHandler)
 		apiGroup.GET("/articles/:article_date", articleHandler.ApiArticleHandler)
