@@ -25,7 +25,10 @@ func main() {
 	}
 	Debug("Start PORT:", port)
 	engine := gin.Default()
-	engine.Use(cors.Default())
+	corsCfg := cors.DefaultConfig()
+	corsCfg.AllowAllOrigins = true
+	corsCfg.AllowWildcard = true
+	engine.Use(cors.New(corsCfg))
 	engine.Use(UpgradeHTTPSMiddleware())
 	engine.Use(gzip.Gzip(gzip.DefaultCompression))
 	engine.LoadHTMLGlob("templates/*")
