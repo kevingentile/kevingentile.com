@@ -8,10 +8,9 @@ import (
 
 	"github.com/gin-contrib/gzip"
 	"github.com/gin-gonic/gin"
+	"github.com/kevingentile/kevingentile.com/handlers"
 	"github.com/spf13/viper"
 )
-
-var limiter <-chan time.Time
 
 func main() {
 	if err := initConfig(); err != nil {
@@ -34,13 +33,7 @@ func main() {
 	engine.GET("/", func(c *gin.Context) {
 		c.Redirect(http.StatusSeeOther, "/home")
 	})
-
-	rl, err := NewRateLimiter(time.Second * viper.GetDuration("limiter_duration"))
-	if err != nil {
-		Fatal(err)
-	}
-
-	obsLimited := engine.Group("/obs").Use(rl.RateLimit())
+	obsLimited := engine.Group("/obs").Use(handlers.NewRateLimitHandler(time.Second * viper.GetDuration("limiter_duration")))
 	{
 		obsLimited.GET("/:platform/:username", handleFortniteData)
 	}
