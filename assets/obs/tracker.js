@@ -16,7 +16,11 @@ var app = new Vue({
             var self = this;
             self.getData();
             setInterval(function () {
-                self.getData();
+                try {
+                    self.getData();
+                } catch (e) {
+                    console.error(e);
+                }
             }, this.interval);
         },
         getData: function () {

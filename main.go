@@ -38,6 +38,7 @@ func main() {
 		obsLimited.GET("/:platform/:username", handleFortniteData)
 	}
 
+	// TODO move to angular
 	engine.StaticFile("/fortnite", "pages/fortnite.html")
 
 	// Serve this file for any /fornite route

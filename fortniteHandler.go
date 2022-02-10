@@ -24,6 +24,7 @@ func handleFortniteData(c *gin.Context) {
 	key := viper.GetString("fortnite_tracker_token")
 	profile, err := tracker.GetProfile(platform, username, key)
 	if err != nil {
+		log.Println(err)
 		c.AbortWithError(http.StatusInternalServerError, err)
 		return
 	}
