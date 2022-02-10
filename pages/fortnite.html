@@ -74,9 +74,11 @@
 
     <script>
         function submit() {
-            console.log('submit');
             var platform = document.getElementById("platform").value;
             var username = document.getElementById("username").value;
+            if (platform == "" || username == "") {
+                return
+            }
             var origin = window.location.origin;
             var path = origin + "/fortnite/" + platform + "/" + username;
             window.location = path;
