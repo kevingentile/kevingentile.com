@@ -25,7 +25,6 @@ func main() {
 	engine := gin.Default()
 	engine.Use(UpgradeHTTPSMiddleware())
 	engine.Use(gzip.Gzip(gzip.DefaultCompression))
-	engine.LoadHTMLGlob("templates/*")
 
 	engine.GET("/ping", func(c *gin.Context) {
 		c.String(http.StatusOK, "pong")
