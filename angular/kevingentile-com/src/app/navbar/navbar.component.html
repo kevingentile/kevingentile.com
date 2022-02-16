@@ -1,5 +1,5 @@
 <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark shadow-lg mb-5">
-    <a class="navbar-brand" href="/">kevingentile.com</a>
+    <a class="navbar-brand" [routerLink]="['']">kevingentile.com</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -7,13 +7,13 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/']">Home</a>
+                <a class="nav-link" [routerLink]="['']">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/rambler']">Rambler</a>
+                <a class="nav-link" [routerLink]="['rambler']">Rambler</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/fortnite">OBS</a>
+                <a class="nav-link" [routerLink]="['obs']">OBS</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="https://github.com/kevingentile">GitHub</a>

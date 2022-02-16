@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ArticleComponent } from './article/article.component';
 import { ArticlesComponent } from './articles/articles.component';
 import { HomeComponent } from './home/home.component';
+import { ObsComponent } from './obs/obs.component';
 
 const routes: Routes = [
   { path: '',
@@ -15,6 +16,10 @@ const routes: Routes = [
   {
     path: 'rambler/:articleDate',
     component: ArticleComponent
+  },
+  {
+    path: 'obs',
+    component: ObsComponent
   },
   {
     path: '**',
