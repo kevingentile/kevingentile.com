@@ -62,7 +62,9 @@ func main() {
 		apiGroup.GET("/articles/:article_date", articleHandler.ApiArticleHandler)
 	}
 
-	engine.Static("/home", "angular/kevingentile-com/dist/kevingentile-com")
+	engine.Static("/home", "angular/kevingentile-com/dist/kevingentile-com").Use(func(c *gin.Context) {
+		c.Writer.Header().Set("Cache-Control", "public, max-age=604800, immutable")
+	})
 
 	engine.NoRoute(func(c *gin.Context) {
 		c.Redirect(http.StatusSeeOther, "/")
