@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
 
 import { ObsComponent } from './obs.component';
 
@@ -8,7 +9,8 @@ describe('ObsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ObsComponent ]
+      declarations: [ ObsComponent ],
+      imports: [FormsModule]
     })
     .compileComponents();
   });
