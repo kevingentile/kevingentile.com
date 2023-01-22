@@ -15,7 +15,8 @@ const routes: Routes = [
   },
   {
     path: 'rambler/:articleDate',
-    component: ArticleComponent
+    component: ArticleComponent,
+    pathMatch: 'full'
   },
   {
     path: 'obs',
@@ -23,7 +24,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: ''
+    redirectTo: '' // TODO 404 component
   }
 ];
 
