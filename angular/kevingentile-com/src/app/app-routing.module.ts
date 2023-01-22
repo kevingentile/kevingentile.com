@@ -10,15 +10,6 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'rambler',
-    component: ArticlesComponent,
-  },
-  {
-    path: 'rambler/:articleDate',
-    component: ArticleComponent,
-    pathMatch: 'full'
-  },
-  {
     path: 'obs',
     component: ObsComponent
   },

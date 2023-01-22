@@ -48,18 +48,12 @@ func Run() {
 
 	engine.Static("/fortnite/assets", "assets/obs")
 
-	articleHandler, err := NewArticleHandler()
-	if err != nil {
-		Fatal(err)
-	}
-
 	apiGroup := engine.Group("/api").Use(func(c *gin.Context) {
 		c.Header("Access-Control-Allow-Origin", "*")
 		c.Next()
 	})
 	{
-		apiGroup.GET("/articles", articleHandler.ApiListHandler)
-		apiGroup.GET("/articles/:article_date", articleHandler.ApiArticleHandler)
+		apiGroup.GET("/", func(c *gin.Context) { c.String(http.StatusOK, "%s", "OK") })
 	}
 
 	engine.GET("/home", func(c *gin.Context) {
