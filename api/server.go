@@ -1,7 +1,6 @@
 package api
 
 import (
-	"log"
 	"net/http"
 	"os"
 	"path"
@@ -63,13 +62,18 @@ func Run() {
 		apiGroup.GET("/articles/:article_date", articleHandler.ApiArticleHandler)
 	}
 
-	engine.Static("/home", "angular/kevingentile-com/dist/kevingentile-com").Use(func(c *gin.Context) {
-		log.Println("REQUESTUR", c.Request.RequestURI)
-		if c.Request.URL.Path == "index.html" {
-			c.Writer.Header().Set("Cache-Control", "no-cache")
-		}
-		c.Writer.Header().Set("Cache-Control", "public, max-age=604800, immutable")
+	engine.GET("/home", func(c *gin.Context) {
+		c.Writer.Header().Set("Cache-Control", "no-cache")
+		c.File("angular/kevingentile-com/dist/kevingentile-com/index.html")
 	})
+
+	engine.GET("/favicon.ico", func(c *gin.Context) {
+		//TODO favicon
+		c.AbortWithStatus(http.StatusNotFound)
+	})
+
+	// serve assets
+	engine.Static("/home/", "angular/kevingentile-com/dist/kevingentile-com")
 
 	engine.NoRoute(func(c *gin.Context) {
 		c.Redirect(http.StatusSeeOther, "/")
