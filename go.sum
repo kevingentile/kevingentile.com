@@ -121,6 +121,8 @@ github.com/jtolds/gls v4.20.0+incompatible/go.mod h1:QJZ7F/aHp+rZTRtaJ1ow/lLfFfV
 github.com/julienschmidt/httprouter v1.2.0/go.mod h1:SYymIcj16QtmaHHD7aYtjjsJG7VTCxuUUipMqKk8s4w=
 github.com/kevingentile/fortnite-tracker v1.0.0 h1:QE93khOMSckMyKjpgz9H/6xfe8g1NV6OEa0wqrjo+yc=
 github.com/kevingentile/fortnite-tracker v1.0.0/go.mod h1:MhkXmTUVuQDZnlZNanlz7tYlguZAOwhe9Vwkn1IwJrE=
+github.com/kevingentile/fortnite-tracker v1.0.2 h1:sxtox6KtQ2mg61ncKN/RrmsvIoMCIz5pyR1JihMt+m0=
+github.com/kevingentile/fortnite-tracker v1.0.2/go.mod h1:MhkXmTUVuQDZnlZNanlz7tYlguZAOwhe9Vwkn1IwJrE=
 github.com/kisielk/errcheck v1.1.0/go.mod h1:EZBBE59ingxPouuu3KfxchcWSUPOHkagtvWXihfKN4Q=
 github.com/kisielk/gotool v1.0.0/go.mod h1:XhKaO+MFFWcvkIS/tQcRk01m1F5IRFswLeQ+oQHNcck=
 github.com/konsorten/go-windows-terminal-sequences v1.0.1/go.mod h1:T0+1ngSBFLxvqU3pZ+m/2kptfBszLMUkC4ZK/EgS/cQ=
