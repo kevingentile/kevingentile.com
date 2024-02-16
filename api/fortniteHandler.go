@@ -44,7 +44,7 @@ func handleFortniteData(c *gin.Context) {
 	}
 	data.Wins = wins
 
-	kdr, err := profile.GetCurrentKDR()
+	kdr, err := profile.GetKDR()
 	if err != nil {
 		c.AbortWithError(http.StatusInternalServerError, err)
 		return

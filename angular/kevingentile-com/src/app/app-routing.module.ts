@@ -6,13 +6,14 @@ import { HomeComponent } from './home/home.component';
 import { ObsComponent } from './obs/obs.component';
 
 const routes: Routes = [
-  { path: '',
+  {
+    path: '',
     component: HomeComponent
   },
-  {
-    path: 'obs',
-    component: ObsComponent
-  },
+  // {
+  //   path: 'obs',
+  //   component: ObsComponent
+  // },
   {
     path: '**',
     redirectTo: '' // TODO 404 component
